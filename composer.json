@@ -9,7 +9,7 @@
       }
     ],
     "require": {
-
+      "phpoffice/phpspreadsheet": "*"
     },
     "autoload": {
       "psr-4": {
