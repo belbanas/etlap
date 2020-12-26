@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '97060d154541a9b0481ae697b4fd0e436637e74b',
+    'reference' => '20d2bb527c3e01fd3ccc025a6a129ca3ffedc418',
     'name' => 'belbanas/etlap',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '97060d154541a9b0481ae697b4fd0e436637e74b',
+      'reference' => '20d2bb527c3e01fd3ccc025a6a129ca3ffedc418',
     ),
     'maennchen/zipstream-php' => 
     array (
