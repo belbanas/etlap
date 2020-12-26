@@ -1,0 +1,19 @@
+{
+    "name": "belbanas/etlap",
+    "description": "daily menu changer",
+    "minimum-stability": "stable",
+    "authors": [
+      {
+        "name": "daniel",
+        "email": "belbanas@gmail.com"
+      }
+    ],
+    "require": {
+
+    },
+    "autoload": {
+      "psr-4": {
+        "app\\": "app/"
+      }
+    }
+  }
