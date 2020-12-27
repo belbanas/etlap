@@ -4,6 +4,8 @@
 namespace app\models;
 
 
+use Exception;
+
 class Pult
 {
     private ?int $id;
@@ -51,11 +53,14 @@ class Pult
             default:
                 // TODO
         }
+        $slide = [];
 
-        $slide = [
-            "HU" => $modelHU->getFood($this->id),
-            "DE" => $modelDE->getFood($this->id),
-        ];
+        if ($modelHU != null && $modelDE != null) {
+            $slide = [
+                "HU" => $modelHU->getFood($this->id),
+                "DE" => $modelDE->getFood($this->id),
+            ];
+        }
 
         return $slide;
     }
