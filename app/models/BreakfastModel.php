@@ -8,7 +8,6 @@ use PhpOffice\PhpSpreadsheet\Reader\Exception;
 
 class BreakfastModel extends MenuModel
 {
-    private string $language;
 
     /**
      * BreakfastModel constructor.
@@ -17,8 +16,7 @@ class BreakfastModel extends MenuModel
      */
     public function __construct(string $language)
     {
-        parent::__construct();
-        $this->language = $language;
+        parent::__construct($language);
         $this->filename = './' . $this->WEEK . '_Het_Reggeli.xls';
         $this->type = 'Breakfast';
     }

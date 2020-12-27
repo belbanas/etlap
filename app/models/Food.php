@@ -2,14 +2,16 @@
 
 namespace app\models;
 
-class Food
+use JsonSerializable;
+
+class Food implements JsonSerializable
 {
     private ?string $name;
     private ?int $price;
     private string $type;
     private string $day;
     private string $language;
-    private int $counter;
+    private int $pult;
 
     /**
      * Food constructor.
@@ -18,16 +20,16 @@ class Food
      * @param string $type
      * @param string $day
      * @param string $language
-     * @param int $counter
+     * @param int $pult
      */
-    public function __construct(?string $name, ?int $price, string $type, string $day, string $language, int $counter)
+    public function __construct(?string $name, ?int $price, string $type, string $day, string $language, int $pult)
     {
         $this->name = $name;
         $this->price = $price;
         $this->type = $type;
         $this->day = $day;
         $this->language = $language;
-        $this->counter = $counter;
+        $this->pult = $pult;
     }
 
     /**
@@ -73,10 +75,22 @@ class Food
     /**
      * @return int
      */
-    public function getCounter(): int
+    public function getPult(): int
     {
-        return $this->counter;
+        return $this->pult;
     }
 
 
+    public function jsonSerialize()
+    {
+        // TODO: Implement jsonSerialize() method.
+        return [
+            "name" => $this->name,
+            "price" => $this->price,
+            "type" => $this->type,
+            "day" => $this->day,
+            "language" => $this->language,
+            "pult" => $this->pult
+        ];
+    }
 }

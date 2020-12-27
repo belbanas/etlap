@@ -6,17 +6,16 @@ namespace app\models;
 
 class Pult
 {
-    private ?int $pult;
-    private int $lunchStart;
-    private int $lunchEnd;
+    private ?int $id;
+    private ?array $intervals;
 
     /**
      * Pult constructor.
-     * @param int|null $pult
+     * @param int|null $id
      */
-    public function __construct(?int $pult)
+    public function __construct(?int $id)
     {
-        $this->pult = $pult;
+        $this->id = $id;
         $this->setTimeIntervals();
     }
 
@@ -24,25 +23,38 @@ class Pult
     {
         $path = './time_intervals.json';
         $str = file_get_contents($path);
-        $params = json_decode($str, true);
-
-        $this->lunchStart = $params["lunch"][0];
-        $this->lunchEnd = $params["lunch"][1];
+        $this->intervals = json_decode($str, true);
     }
 
     public function getSlide(): array
     {
         $hour = date('H');
-        if ($hour >= $this->lunchStart && $hour <= $this->lunchEnd) {
-            $modelHU = new LunchModel('HU');
-            $modelDE = new LunchModel('DE');
-        } else {
-            $modelHU = new BreakfastModel("HU");
-            $modelDE = new BreakfastModel("DE");
+        switch ($hour) {
+            case $hour >= $this->intervals["breakfast"]["start"] && $hour < $this->intervals["breakfast"]["end"]:
+                $modelHU = new BreakfastModel("HU");
+                $modelDE = new BreakfastModel("DE");
+                break;
+            case $hour >= $this->intervals["lunch"]["start"] && $hour < $this->intervals["lunch"]["end"]:
+                $modelHU = new LunchModel('HU');
+                $modelDE = new LunchModel('DE');
+                break;
+            case $hour >= $this->intervals["snack"]["start"] && $hour < $this->intervals["snack"]["end"]:
+                // TODO
+                $modelHU = new SnackModel("HU");
+                $modelDE = new SnackModel("DE");
+                break;
+            case $hour >= $this->intervals["dinner"]["start"] && $hour < $this->intervals["dinner"]["end"]:
+                // TODO
+                $modelHU = new DinnerModel("HU");
+                $modelDE = new DinnerModel("DE");
+                break;
+            default:
+                // TODO
         }
+
         $slide = [
-            "HU" => $modelHU->getFood($this->pult),
-            "DE" => $modelDE->getFood($this->pult),
+            "HU" => $modelHU->getFood($this->id),
+            "DE" => $modelDE->getFood($this->id),
         ];
 
         return $slide;

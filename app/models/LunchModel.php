@@ -8,6 +8,7 @@ use PhpOffice\PhpSpreadsheet\Reader\Exception;
 
 class LunchModel extends MenuModel
 {
+
     /**
      * LunchModel constructor.
      * @param string $language
@@ -15,7 +16,7 @@ class LunchModel extends MenuModel
      */
     public function __construct(string $language)
     {
-        parent::__construct();
+        parent::__construct($language);
         $this->filename = './' . $this->WEEK . '_Het_' . $language . '.xls';
         $this->type = 'Lunch';
     }
@@ -46,13 +47,13 @@ class LunchModel extends MenuModel
             "Saturday" => ["AF6", "AH7"],
             "Sunday" => ["AL6", "AN7"]
         ], 3 => [
-            "Monday" => ["B8", "D59"],
-            "Tuesday" => ["H8", "J59"],
-            "Wednesday" => ["N8", "P59"],
-            "Thursday" => ["T8", "V59"],
-            "Friday" => ["Z8", "AB59"],
-            "Saturday" => ["AF8", "AH59"],
-            "Sunday" => ["AL8", "AN59"]
+            "Monday" => ["B8", "D9"],
+            "Tuesday" => ["H8", "J9"],
+            "Wednesday" => ["N8", "P9"],
+            "Thursday" => ["T8", "V9"],
+            "Friday" => ["Z8", "AB9"],
+            "Saturday" => ["AF8", "AH9"],
+            "Sunday" => ["AL8", "AN9"]
         ], 4 => [
             "Monday" => ["B10", "D11"],
             "Tuesday" => ["H10", "J11"],
