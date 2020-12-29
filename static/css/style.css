@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Arial", "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100vh;
+}
+
+.main-content {
+    display: grid;
+    place-items: center;
+    height: 75%;
+    background: yellow;
+}
+
+p {
+    text-align: center;
+    font-weight: bold;
+    font-size: 4rem;
+}
+
+.header {
+    width: 100vw;
+    height: 25%;
+    background: red;
+    display: grid;
+    place-items: center;
+}
+
+#logo {
+    position: absolute;
+    margin-top: -1rem;
+    margin-left: 1rem;
+    height: 24rem;
+}
