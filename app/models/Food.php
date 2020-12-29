@@ -6,7 +6,8 @@ use JsonSerializable;
 
 class Food implements JsonSerializable
 {
-    private ?string $name;
+    private ?string $mainCourse;
+    private ?string $soup;
     private ?int $price;
     private string $type;
     private string $day;
@@ -15,16 +16,18 @@ class Food implements JsonSerializable
 
     /**
      * Food constructor.
-     * @param string|null $name
+     * @param string|null $soup
+     * @param string|null $mainCourse
      * @param int|null $price
      * @param string $type
      * @param string $day
      * @param string $language
      * @param int $pult
      */
-    public function __construct(?string $name, ?int $price, string $type, string $day, string $language, int $pult)
+    public function __construct(?string $soup, ?string $mainCourse, ?int $price, string $type, string $day, string $language, int $pult)
     {
-        $this->name = $name;
+        $this->mainCourse = $mainCourse;
+        $this->soup = $soup;
         $this->price = $price;
         $this->type = $type;
         $this->day = $day;
@@ -35,10 +38,20 @@ class Food implements JsonSerializable
     /**
      * @return string|null
      */
-    public function getName(): ?string
+    public function getMainCourse(): ?string
     {
-        return $this->name;
+        return $this->mainCourse;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getSoup(): ?string
+    {
+        return $this->soup;
+    }
+
+
 
     /**
      * @return int|null
@@ -85,7 +98,8 @@ class Food implements JsonSerializable
     {
         // TODO: Implement jsonSerialize() method.
         return [
-            "name" => $this->name,
+            "main" => $this->mainCourse,
+            "soup" => $this->soup,
             "price" => $this->price,
             "type" => $this->type,
             "day" => $this->day,

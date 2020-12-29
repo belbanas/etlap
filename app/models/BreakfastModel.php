@@ -44,7 +44,7 @@ class BreakfastModel extends MenuModel
             "Sunday" => ["G8", "L8"]
         ]];
 
-        return ["name" => $coordinates[$this->language][$this->TODAY][0],
+        return ["main" => $coordinates[$this->language][$this->TODAY][0],
             "price" => $coordinates[$this->language][$this->TODAY][1]];
     }
 

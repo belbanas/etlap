@@ -43,30 +43,50 @@ class MenuModel
         return null;
     }
 
-    public function getFood(int $pult): Food
+    public function getFood(int $pult): ?Food
     {
         try {
             $spreadsheet = $this->reader->load($this->filename);
         } catch (InvalidArgumentException $e) {
-            echo $e->getMessage().' Nem található az excel fájl a következőhöz: '.$this->type;
+            echo $e->getMessage() . ' Nem található az excel fájl a következőhöz: ' . $this->type . $this->language . " ";
+            return new Food("Missing Soup", "Missign Main Course", 0, $this->type, $this->TODAY, $this->language, $pult);
         }
-        $nameCoordinate = $this->getCoordinates($pult)["name"];
+        $soupCoordinate = $this->getCoordinates($pult)["soup"];
+        $mainCoordinate = $this->getCoordinates($pult)["main"];
         $priceCoordinate = $this->getCoordinates($pult)["price"];
+        $soup = "";
+        $main = "";
+        $price = 0;
         try {
-            $name = $spreadsheet->getActiveSheet()->getCell($nameCoordinate)->getCalculatedValue();
+            $soup = $spreadsheet->getActiveSheet()->getCell($soupCoordinate)->getCalculatedValue();
         } catch (\PhpOffice\PhpSpreadsheet\Calculation\Exception $e) {
-            echo $e->getMessage().'. Hiba a beolvasott excel koordinátában! (NÉV) ';
+//            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (LEVES) ';
         } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
-            echo $e->getMessage().'. Hiba a beolvasott excel koordinátában! (NÉV) ';
+//            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (LEVES) ';
+        }
+        try {
+            $main = $spreadsheet->getActiveSheet()->getCell($mainCoordinate)->getCalculatedValue();
+        } catch (\PhpOffice\PhpSpreadsheet\Calculation\Exception $e) {
+            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (FŐÉTEL) ';
+        } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
+            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (FŐÉTEL) ';
         }
         try {
             $price = $spreadsheet->getActiveSheet()->getCell($priceCoordinate)->getCalculatedValue();
         } catch (\PhpOffice\PhpSpreadsheet\Calculation\Exception $e) {
-            echo $e->getMessage().'. Hiba a beolvasott excel koordinátában! (ÁR) ';
+            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (ÁR) ';
         } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
-            echo $e->getMessage().'. Hiba a beolvasott excel koordinátában! (ÁR) ';
+            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (ÁR) ';
         }
 
-        return new Food($name, $price, $this->type, $this->TODAY, $this->language, $pult);
+
+        if ($soup == null) {
+            $soup = "";
+        }
+        if ($soupCoordinate === null || $priceCoordinate === null) {
+            $soup = null;
+        }
+
+        return new Food($soup, $main, $price, $this->type, $this->TODAY, $this->language, $pult);
     }
 }

@@ -27,25 +27,25 @@ class LunchModel extends MenuModel
      */
     public function getCoordinates(int $pult): array
     {
-        $nameCoordinate = null;
+        $soupCoordinate = null;
         $priceCoordinate = null;
 
         $coordinates = [1 => [
-            "Monday" => ["B4", "D5"],
-            "Tuesday" => ["H4", "J5"],
-            "Wednesday" => ["N4", "P5"],
-            "Thursday" => ["T4", "V5"],
-            "Friday" => ["Z4", "AB5"],
-            "Saturday" => ["AF4", "AH5"],
-            "Sunday" => ["AL4", "AN5"]
+            "Monday" => ["B4", "B8", "D5"],
+            "Tuesday" => ["H4", "H8", "J5"],
+            "Wednesday" => ["N4", "N8", "P5"],
+            "Thursday" => ["T4", "T8", "V5"],
+            "Friday" => ["Z4", "Z8", "AB5"],
+            "Saturday" => ["AF4", "AF8", "AH5"],
+            "Sunday" => ["AL4", "AL8", "AN5"]
         ], 2 => [
-            "Monday" => ["B6", "D7"],
-            "Tuesday" => ["H6", "J7"],
-            "Wednesday" => ["N6", "P7"],
-            "Thursday" => ["T6", "V7"],
-            "Friday" => ["Z6", "AB7"],
-            "Saturday" => ["AF6", "AH7"],
-            "Sunday" => ["AL6", "AN7"]
+            "Monday" => ["B6", "B12", "D7"],
+            "Tuesday" => ["H6", "H12", "J7"],
+            "Wednesday" => ["N6", "N12", "P7"],
+            "Thursday" => ["T6", "T12", "V7"],
+            "Friday" => ["Z6", "Z12", "AB7"],
+            "Saturday" => ["AF6", "AF12", "AH7"],
+            "Sunday" => ["AL6", "AL12", "AN7"]
         ], 3 => [
             "Monday" => ["B8", "D9"],
             "Tuesday" => ["H8", "J9"],
@@ -64,8 +64,9 @@ class LunchModel extends MenuModel
             "Sunday" => ["AL10", "AN11"]
         ]];
 
-        return ["name" => $coordinates[$pult][$this->TODAY][0],
-            "price" => $coordinates[$pult][$this->TODAY][1]];
+        return ["soup" => $coordinates[$pult][$this->TODAY][0],
+            "main" => $coordinates[$pult][$this->TODAY][1],
+            "price" => $coordinates[$pult][$this->TODAY][2]];
     }
 
 

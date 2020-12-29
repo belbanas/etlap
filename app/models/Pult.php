@@ -30,38 +30,65 @@ class Pult
 
     public function getSlide(): array
     {
-        $hour = date('H');
-        switch ($hour) {
-            case $hour >= $this->intervals["breakfast"]["start"] && $hour < $this->intervals["breakfast"]["end"]:
+        $currentDay = date('N');
+        $currentTime = date('H:i:s');
+        $breakfastEnd = $this->intervals['breakfast']['end'];
+        if ($currentDay === 6 || $currentDay === 7) {
+            $breakfastEnd = $this->intervals['breakfast']['weekend'];
+        }
+        switch ($currentTime) {
+            case $currentTime >= $this->intervals["breakfast"]["start"] && $currentTime < $breakfastEnd:
                 $modelHU = new BreakfastModel("HU");
-                $modelDE = new BreakfastModel("DE");
+                $modelUA = new BreakfastModel("UA");
+                $modelKR = new BreakfastModel("KR");
+                $modelEN = new BreakfastModel("EN");
                 break;
-            case $hour >= $this->intervals["lunch"]["start"] && $hour < $this->intervals["lunch"]["end"]:
+            case $currentTime >= $this->intervals["lunch"]["start"] && $currentTime < $this->intervals["lunch"]["end"]:
                 $modelHU = new LunchModel('HU');
-                $modelDE = new LunchModel('DE');
+                $modelUA = new LunchModel('UA');
+                $modelKR = new LunchModel('KR');
+                $modelEN = new LunchModel('EN');
                 break;
-            case $hour >= $this->intervals["snack"]["start"] && $hour < $this->intervals["snack"]["end"]:
-                // TODO
-                $modelHU = new SnackModel("HU");
-                $modelDE = new SnackModel("DE");
-                break;
-            case $hour >= $this->intervals["dinner"]["start"] && $hour < $this->intervals["dinner"]["end"]:
-                // TODO
+            case $currentTime >= $this->intervals["dinner1"]["start"] && $currentTime < $this->intervals["dinner1"]["end"]:
                 $modelHU = new DinnerModel("HU");
-                $modelDE = new DinnerModel("DE");
+                $modelUA = new DinnerModel("UA");
+                $modelKR = new DinnerModel("KR");
+                $modelEN = new DinnerModel("EN");
+                break;
+            case $currentTime >= $this->intervals["dinner2"]["start"] && $currentTime < $this->intervals["dinner2"]["end"]:
+                $modelHU = new Dinner2Model("HU");
+                $modelUA = new Dinner2Model("UA");
+                $modelKR = new Dinner2Model("KR");
+                $modelEN = new Dinner2Model("EN");
+                break;
+            case $currentTime >= $this->intervals["snack"]["start"] && $currentTime < $this->intervals["snack"]["end"]:
+                $modelHU = new SnackModel("HU");
+                $modelUA = new SnackModel("UA");
+                $modelKR = new SnackModel("KR");
+                $modelEN = new SnackModel("EN");
                 break;
             default:
-                // TODO
-        }
-        $slide = [];
-
-        if ($modelHU != null && $modelDE != null) {
-            $slide = [
-                "HU" => $modelHU->getFood($this->id),
-                "DE" => $modelDE->getFood($this->id),
-            ];
+                return [];
         }
 
-        return $slide;
+
+        if ($modelHU != null && $modelUA != null && $modelKR != null && $modelEN != null) {
+            if ($modelHU->getFood($this->id)->getMainCourse() != null) {
+                return [
+                    "HU" => $modelHU->getFood($this->id),
+                    "UA" => $modelUA->getFood($this->id),
+                    "KR" => $modelKR->getFood($this->id),
+                    "EN" => $modelEN->getFood($this->id),
+                ];
+            } else {
+                echo "ez";
+                return [];
+            }
+        }
+        return [];
+    }
+
+    public function getJSON() {
+        return json_encode($this->getSlide(), JSON_UNESCAPED_UNICODE);
     }
 }
