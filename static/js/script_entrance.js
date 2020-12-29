@@ -18,7 +18,13 @@ const DOM = {
         closedKR: "닫은",
         closedEN: "CLOSED",
     },
-    slideshow: function (json, container, soupContainer, foodContainer) {
+    flagList: {
+        HU: "nincs",
+        EN: `<img src="/static/images/flag_EN.png" alt="English flag">`,
+        UA: "nincs",
+        KR: "nincs",
+    },
+    slideshow: function (json, container, soupContainer, foodContainer, flagContainer) {
         if (json.length === 0) {
             console.log("zárva")
             setInterval(() => {
@@ -31,15 +37,19 @@ const DOM = {
                         break;
                     case sec >= 1 && sec < 15:
                         container.innerHTML = DOM.closeList.closedHU
+                        flagContainer.innerHTML = DOM.flagList.HU
                         break;
                     case sec >= 15 && sec < 30:
                         container.innerHTML = DOM.closeList.closedEN
+                        flagContainer.innerHTML = DOM.flagList.EN
                         break;
                     case sec >= 30 && sec < 45:
                         container.innerHTML = DOM.closeList.closedUA
+                        flagContainer.innerHTML = DOM.flagList.UA
                         break;
                     case sec >= 45:
                         container.innerHTML = DOM.closeList.closedKR
+                        flagContainer.innerHTML = DOM.flagList.KR
                         break;
                 }
             }, 1000)
@@ -96,7 +106,7 @@ const DOM = {
                     foodContainer.innerHTML = DOM.foodList.foodHU;
                     console.log(DOM.foodList.soupHU);
                 }
-                DOM.slideshow(json_response, container, soupContainer, foodContainer);
+                DOM.slideshow(json_response, container, soupContainer, foodContainer, flagContainer);
             })
     }
 }
