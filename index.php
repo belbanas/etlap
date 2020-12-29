@@ -12,8 +12,8 @@ Route::add('/json-output', function () {
     echo $pult->getJSON();
 }, 'get');
 
-Route::add('/proba', function () {
-    include ('pult.php');
+Route::add('/bejarat', function () {
+    include('bejarat.html');
 }, 'get');
 
 Route::run('/');
