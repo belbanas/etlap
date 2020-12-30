@@ -24,7 +24,15 @@ const DOM = {
         UA: "nincs",
         KR: "nincs",
     },
-    slideshow: function (json, container, soupContainer, foodContainer, flagContainer) {
+    containers: {
+        soupContainer: document.querySelector('#soup-name'),
+        foodContainer: document.querySelector('#food-name'),
+        priceContainer: document.querySelector('#food-price'),
+        pultNameContainer: document.querySelector('#pult-name'),
+        flagContainer: document.querySelector('#flag'),
+        container: document.querySelector('.container'),
+    },
+    slideshow: function (json) {
         if (json.length === 0) {
             console.log("zárva")
             setInterval(() => {
@@ -36,20 +44,20 @@ const DOM = {
                         location.reload();
                         break;
                     case sec >= 1 && sec < 15:
-                        container.innerHTML = DOM.closeList.closedHU
-                        flagContainer.innerHTML = DOM.flagList.HU
+                        DOM.containers.container.innerHTML = DOM.closeList.closedHU
+                        DOM.containers.flagContainer.innerHTML = DOM.flagList.HU
                         break;
                     case sec >= 15 && sec < 30:
-                        container.innerHTML = DOM.closeList.closedEN
-                        flagContainer.innerHTML = DOM.flagList.EN
+                        DOM.containers.container.innerHTML = DOM.closeList.closedEN
+                        DOM.containers.flagContainer.innerHTML = DOM.flagList.EN
                         break;
                     case sec >= 30 && sec < 45:
-                        container.innerHTML = DOM.closeList.closedUA
-                        flagContainer.innerHTML = DOM.flagList.UA
+                        DOM.containers.container.innerHTML = DOM.closeList.closedUA
+                        DOM.containers.flagContainer.innerHTML = DOM.flagList.UA
                         break;
                     case sec >= 45:
-                        container.innerHTML = DOM.closeList.closedKR
-                        flagContainer.innerHTML = DOM.flagList.KR
+                        DOM.containers.container.innerHTML = DOM.closeList.closedKR
+                        DOM.containers.flagContainer.innerHTML = DOM.flagList.KR
                         break;
                 }
             }, 1000)
@@ -62,32 +70,35 @@ const DOM = {
                     case sec === 0:
                         location.reload();
                         break;
+                    case sec >= 1 && sec < 15:
+                        DOM.containers.soupContainer.innerHTML = DOM.foodList.soupHU
+                        DOM.containers.foodContainer.innerHTML = DOM.foodList.foodHU
+                        DOM.containers.flagContainer.innerHTML = DOM.flagList.HU
+                        break;
                     case sec >= 15 && sec < 30:
-                        soupContainer.innerHTML = DOM.foodList.soupEN
-                        foodContainer.innerHTML = DOM.foodList.foodEN
+                        DOM.containers.soupContainer.innerHTML = DOM.foodList.soupEN
+                        DOM.containers.foodContainer.innerHTML = DOM.foodList.foodEN
+                        DOM.containers.flagContainer.innerHTML = DOM.flagList.EN
                         break;
                     case sec >= 30 && sec < 45:
-                        soupContainer.innerHTML = DOM.foodList.soupUA
-                        foodContainer.innerHTML = DOM.foodList.foodUA
+                        DOM.containers.soupContainer.innerHTML = DOM.foodList.soupUA
+                        DOM.containers.foodContainer.innerHTML = DOM.foodList.foodUA
+                        DOM.containers.flagContainer.innerHTML = DOM.flagList.UA
                         break;
                     case sec >= 45:
-                        soupContainer.innerHTML = DOM.foodList.soupKR
-                        foodContainer.innerHTML = DOM.foodList.foodKR
+                        DOM.containers.soupContainer.innerHTML = DOM.foodList.soupKR
+                        DOM.containers.foodContainer.innerHTML = DOM.foodList.foodKR
+                        DOM.containers.flagContainer.innerHTML = DOM.flagList.KR
                         break;
                 }
             }, 1000)
         }
-    }, fetchData: () => {
-        let soupContainer = document.querySelector('#soup-name');
-        let foodContainer = document.querySelector('#food-name');
-        let priceContainer = document.querySelector('#food-price');
-        let pultNameContainer = document.querySelector('#pult-name');
-        let flagContainer = document.querySelector('#flag');
-        let container = document.querySelector('.container');
+    },
+    fetchData: () => {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const id = urlParams.get('id');
-        pultNameContainer.innerHTML = id;
+        DOM.containers.pultNameContainer.innerHTML = id;
         fetch('/json-output?id=' + id)
             .then(response => response.json())
             .then(json_response => {
@@ -101,12 +112,12 @@ const DOM = {
                     DOM.foodList.soupEN = json_response.EN.soup;
                     DOM.foodList.soupUA = json_response.UA.soup;
                     DOM.foodList.soupKR = json_response.KR.soup;
-                    priceContainer.innerHTML = json_response.HU.price + " HUF";
-                    soupContainer.innerHTML = DOM.foodList.soupHU;
-                    foodContainer.innerHTML = DOM.foodList.foodHU;
+                    DOM.containers.priceContainer.innerHTML = json_response.HU.price + " HUF";
+                    DOM.containers.soupContainer.innerHTML = DOM.foodList.soupHU;
+                    DOM.containers.foodContainer.innerHTML = DOM.foodList.foodHU;
                     console.log(DOM.foodList.soupHU);
                 }
-                DOM.slideshow(json_response, container, soupContainer, foodContainer, flagContainer);
+                DOM.slideshow(json_response);
             })
     }
 }
