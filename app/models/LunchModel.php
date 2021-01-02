@@ -17,7 +17,7 @@ class LunchModel extends MenuModel
     public function __construct(string $language)
     {
         parent::__construct($language);
-        $this->filename = './' . $this->WEEK . '_Het_' . $language . '.xls';
+        $this->filename = './' . $this->WEEK . '_Het_' . 'HU' . '.xls';
         $this->type = 'Lunch';
     }
 
@@ -36,7 +36,7 @@ class LunchModel extends MenuModel
             "Wednesday" => ["N4", "N8", "P5"],
             "Thursday" => ["T4", "T8", "V5"],
             "Friday" => ["Z4", "Z8", "AB5"],
-            "Saturday" => ["AF4", "AF8", "AH5"],
+            "Saturday" => ["AF6", "AF8", "AH7"],
             "Sunday" => ["AL4", "AL8", "AN5"]
         ], 2 => [
             "Monday" => ["B6", "B12", "D7"],

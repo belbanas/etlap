@@ -56,3 +56,20 @@ p {
     padding: 1rem;
     margin-top: 4rem;
 }
+
+.upload-container {
+    margin-top: 10rem;
+    text-align: center;
+}
+
+h1, form, label {
+    padding: 1rem;
+}
+
+h1 {
+    margin-bottom: 1rem;
+}
+
+button {
+    font-size: 1.5rem;
+}

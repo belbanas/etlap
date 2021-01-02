@@ -13,6 +13,7 @@ class Upload
         $week = substr($post['week'], -2);
         echo $week;
         $target = $this->uploadFolder.$week."_Het_HU.xls";
+//        Ez nem biztos, hogy fog kelleni:
         if (file_exists($target)) {
             echo '<script type="text/javascript">alert("Az adott hétre már van étlap, kérlek válassz másikat")</script>';
         } else {

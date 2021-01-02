@@ -15,7 +15,6 @@ Route::add('/upload', function () {
     $upload->uploadFile($_FILES, $_POST);
     var_dump($_POST);
     var_dump($_FILES);
-    Header('Location: /upload');
 }, 'post');
 
 Route::add('/json-output', function () {

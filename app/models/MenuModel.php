@@ -87,6 +87,49 @@ class MenuModel
             $soup = null;
         }
 
-        return new Food($soup, $main, $price, $this->type, $this->TODAY, $this->language, $pult);
+        $food = new Food($soup, $main, $price, $this->type, $this->TODAY, $this->language, $pult);
+
+        if ($this->language != "HU") {
+            return $this->translateFood($food);
+        } else {
+            return $food;
+        }
+//        return $food;
+    }
+
+    public function translateFood(Food $food): ?Food
+    {
+        $soup = $food->getSoup();
+        $main = $food->getMainCourse();
+        $translateTable = "./etlapok/forditotabla.xlsx";
+
+        $spreadsheet = $this->reader->load($translateTable);
+        $dataArray = $spreadsheet->getSheet(0)->rangeToArray('A1:D6', null, true, true, false);
+
+
+//        echo $dataArray[1]["A"];
+
+        foreach ($dataArray as $key => $value) {
+            if ($value[0] === $soup) {
+                if ($this->language === "EN") {
+                    $food->setSoup($value[1]);
+                } else if ($this->language === "UA") {
+                    $food->setSoup($value[2]);
+                } else if ($this->language === "KR") {
+                    $food->setSoup($value[3]);
+                }
+            }
+            if ($value[0] === $main) {
+                if ($this->language === "EN") {
+                    $food->setMainCourse($value[1]);
+                } else if ($this->language === "UA") {
+                    $food->setMainCourse($value[2]);
+                } else if ($this->language === "KR") {
+                    $food->setMainCourse($value[3]);
+                }
+            }
+
+        }
+        return $food;
     }
 }

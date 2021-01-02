@@ -52,7 +52,6 @@ class Food implements JsonSerializable
     }
 
 
-
     /**
      * @return int|null
      */
@@ -92,6 +91,24 @@ class Food implements JsonSerializable
     {
         return $this->pult;
     }
+
+    /**
+     * @param string|null $mainCourse
+     */
+    public function setMainCourse(?string $mainCourse): void
+    {
+        $this->mainCourse = $mainCourse;
+    }
+
+    /**
+     * @param string|null $soup
+     */
+    public function setSoup(?string $soup): void
+    {
+        $this->soup = $soup;
+    }
+
+
 
 
     public function jsonSerialize()

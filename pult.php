@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+use app\models\Food;
+use app\models\LunchModel;
 use app\models\Pult;
 
 $pultId = $_GET['id'];
@@ -12,6 +14,11 @@ var_dump($slide);
 
 $json = json_encode($slide, JSON_UNESCAPED_UNICODE);
 echo "json: " . $json;
+
+$proba = new LunchModel("KR");
+$food = new Food("ZÖLDSÉGLEVES", "kaki", 10000, "Lunch", "Saturday", "EN", 1);
+$translatedFood = $proba->translateFood($food);
+var_dump($translatedFood);
 
 if (date("s") === "00") {
     header("Refresh: 0");
