@@ -37,7 +37,7 @@ class LunchModel extends MenuModel
             "Thursday" => ["T4", "T8", "V5"],
             "Friday" => ["Z4", "Z8", "AB5"],
             "Saturday" => ["AF6", "AF8", "AH7"],
-            "Sunday" => ["AL4", "AL8", "AN5"]
+            "Sunday" => ["AL6", "AL8", "AN7"]
         ], 2 => [
             "Monday" => ["B6", "B12", "D7"],
             "Tuesday" => ["H6", "H12", "J7"],

@@ -31,6 +31,8 @@ const DOM = {
         pultNameContainer: document.querySelector('#pult-name'),
         flagContainer: document.querySelector('#flag'),
         container: document.querySelector('.container'),
+        soupPicContainer: document.querySelector('#soup-pic'),
+        mainPicContainer: document.querySelector('#main-pic'),
     },
     slideshow: function (json) {
         if (json.length === 0) {
@@ -115,6 +117,8 @@ const DOM = {
                     DOM.containers.priceContainer.innerHTML = json_response.HU.price + " HUF";
                     DOM.containers.soupContainer.innerHTML = DOM.foodList.soupHU;
                     DOM.containers.foodContainer.innerHTML = DOM.foodList.foodHU;
+                    DOM.containers.soupPicContainer.src = "kepek/" + json_response.HU.soupPic;
+                    DOM.containers.mainPicContainer.src = "kepek/" + json_response.HU.mainPic;
                     console.log(DOM.foodList.soupHU);
                 }
                 DOM.slideshow(json_response);

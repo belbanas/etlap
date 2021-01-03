@@ -89,15 +89,35 @@ class MenuModel
 
         $food = new Food($soup, $main, $price, $this->type, $this->TODAY, $this->language, $pult);
 
+        $this->setPictureFilename($food);
+
         if ($this->language != "HU") {
-            return $this->translateFood($food);
+            $this->translateFood($food);
+            return $food;
         } else {
             return $food;
         }
-//        return $food;
     }
 
-    public function translateFood(Food $food): ?Food
+    public function setPictureFilename(Food $food)
+    {
+        $soup = $food->getSoup();
+        $main = $food->getMainCourse();
+        $translateTable = "./etlapok/forditotabla.xlsx";
+        $spreadsheet = $this->reader->load($translateTable);
+        $dataArray = $spreadsheet->getSheet(0)->rangeToArray('A1:E6', null, true, true, false);
+
+        foreach ($dataArray as $key => $value) {
+            if ($value[0] === $soup) {
+                $food->setSoupPicture($value[4]);
+            }
+            if ($value[0] === $main) {
+                $food->setMainCoursePicture($value[4]);
+            }
+        }
+    }
+
+    public function translateFood(Food $food)
     {
         $soup = $food->getSoup();
         $main = $food->getMainCourse();
@@ -106,8 +126,6 @@ class MenuModel
         $spreadsheet = $this->reader->load($translateTable);
         $dataArray = $spreadsheet->getSheet(0)->rangeToArray('A1:D6', null, true, true, false);
 
-
-//        echo $dataArray[1]["A"];
 
         foreach ($dataArray as $key => $value) {
             if ($value[0] === $soup) {
@@ -128,8 +146,6 @@ class MenuModel
                     $food->setMainCourse($value[3]);
                 }
             }
-
         }
-        return $food;
     }
 }

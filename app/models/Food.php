@@ -13,6 +13,8 @@ class Food implements JsonSerializable
     private string $day;
     private string $language;
     private int $pult;
+    private ?string $soupPicture;
+    private ?string $mainCoursePicture;
 
     /**
      * Food constructor.
@@ -108,7 +110,37 @@ class Food implements JsonSerializable
         $this->soup = $soup;
     }
 
+    /**
+     * @return string|null
+     */
+    public function getSoupPicture(): ?string
+    {
+        return $this->soupPicture;
+    }
 
+    /**
+     * @param string|null $soupPicture
+     */
+    public function setSoupPicture(?string $soupPicture): void
+    {
+        $this->soupPicture = $soupPicture;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getMainCoursePicture(): ?string
+    {
+        return $this->mainCoursePicture;
+    }
+
+    /**
+     * @param string|null $mainCoursePicture
+     */
+    public function setMainCoursePicture(?string $mainCoursePicture): void
+    {
+        $this->mainCoursePicture = $mainCoursePicture;
+    }
 
 
     public function jsonSerialize()
@@ -121,7 +153,9 @@ class Food implements JsonSerializable
             "type" => $this->type,
             "day" => $this->day,
             "language" => $this->language,
-            "pult" => $this->pult
+            "pult" => $this->pult,
+            "mainPic" => $this->mainCoursePicture,
+            "soupPic" => $this->soupPicture
         ];
     }
 }
