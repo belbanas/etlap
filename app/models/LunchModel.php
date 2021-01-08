@@ -17,7 +17,7 @@ class LunchModel extends MenuModel
     public function __construct(string $language)
     {
         parent::__construct($language);
-        $this->filename = './' . $this->WEEK . '_Het_' . 'HU' . '.xls';
+        $this->filename = './etlapok/' . $this->WEEK . '_Het_' . 'HU' . '.xls';
         $this->type = 'Lunch';
     }
 

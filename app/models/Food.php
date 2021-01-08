@@ -35,6 +35,8 @@ class Food implements JsonSerializable
         $this->day = $day;
         $this->language = $language;
         $this->pult = $pult;
+        $this->mainCoursePicture = "";
+        $this->soupPicture = "";
     }
 
     /**

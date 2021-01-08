@@ -12,7 +12,7 @@ use PhpOffice\PhpSpreadsheet\Reader\IReader;
 class MenuModel
 {
     protected string $TODAY;
-    protected int $WEEK;
+    protected ?string $WEEK;
     protected ?string $filename;
     private IReader $reader;
     protected string $type;
@@ -105,7 +105,7 @@ class MenuModel
         $main = $food->getMainCourse();
         $translateTable = "./etlapok/forditotabla.xlsx";
         $spreadsheet = $this->reader->load($translateTable);
-        $dataArray = $spreadsheet->getSheet(0)->rangeToArray('A1:E6', null, true, true, false);
+        $dataArray = $spreadsheet->getSheet(0)->rangeToArray('A1:E60', null, true, true, false);
 
         foreach ($dataArray as $key => $value) {
             if ($value[0] === $soup) {
@@ -124,7 +124,7 @@ class MenuModel
         $translateTable = "./etlapok/forditotabla.xlsx";
 
         $spreadsheet = $this->reader->load($translateTable);
-        $dataArray = $spreadsheet->getSheet(0)->rangeToArray('A1:D6', null, true, true, false);
+        $dataArray = $spreadsheet->getSheet(0)->rangeToArray('A1:D60', null, true, true, false);
 
 
         foreach ($dataArray as $key => $value) {

@@ -19,10 +19,10 @@ const DOM = {
         closedEN: "CLOSED",
     },
     flagList: {
-        HU: "nincs",
+        HU: "magyar zászló",
         EN: `<img src="/static/images/flag_EN.png" alt="English flag">`,
-        UA: "nincs",
-        KR: "nincs",
+        UA: "ukrán zászló",
+        KR: "koreai zászló",
     },
     containers: {
         soupContainer: document.querySelector('#soup-name'),

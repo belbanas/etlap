@@ -6,6 +6,8 @@ use app\models\Food;
 use app\models\LunchModel;
 use app\models\Pult;
 
+echo date('W');
+
 $pultId = $_GET['id'];
 
 $pult = new Pult($pultId);
