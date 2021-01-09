@@ -1,0 +1,38 @@
+{
+  "1": {
+    "Monday" : {"main": "B8", "price": "D5"},
+    "Tuesday" : {"main": "B8", "price": "D5"},
+    "Wednesday" : {"main": "B8", "price": "D5"},
+    "Thursday" : {"main": "B8", "price": "D5"},
+    "Friday" : {"main": "B8", "price": "D5"},
+    "Saturday" : {"main": "B8", "price": "D5"},
+    "Sunday" : {"main": "B8", "price": "D5"}
+  },
+  "2": {
+    "Monday" : {"main": "B8", "price": "D5"},
+    "Tuesday" : {"main": "B8", "price": "D5"},
+    "Wednesday" : {"main": "B8", "price": "D5"},
+    "Thursday" : {"main": "B8", "price": "D5"},
+    "Friday" : {"main": "B8", "price": "D5"},
+    "Saturday" : {"main": "B8", "price": "D5"},
+    "Sunday" : {"main": "B8", "price": "D5"}
+  },
+  "3": {
+    "Monday" : {"main": "B8", "price": "D5"},
+    "Tuesday" : {"main": "B8", "price": "D5"},
+    "Wednesday" : {"main": "B8", "price": "D5"},
+    "Thursday" : {"main": "B8", "price": "D5"},
+    "Friday" : {"main": "B8", "price": "D5"},
+    "Saturday" : {"main": "B8", "price": "D5"},
+    "Sunday" : {"main": "B8", "price": "D5"}
+  },
+  "4": {
+    "Monday" : {"main": "B8", "price": "D5"},
+    "Tuesday" : {"main": "B8", "price": "D5"},
+    "Wednesday" : {"main": "B8", "price": "D5"},
+    "Thursday" : {"main": "B8", "price": "D5"},
+    "Friday" : {"main": "B8", "price": "D5"},
+    "Saturday" : {"main": "B8", "price": "D5"},
+    "Sunday" : {"main": "B8", "price": "D5"}
+  }
+}

@@ -26,7 +26,6 @@ class LunchModel extends MenuModel
      */
     public function getCoordinates(int $pult): array
     {
-
         $path = './lunch_coordinates.json';
         $str = file_get_contents($path);
         $coordinates = json_decode($str, true);
