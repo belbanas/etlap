@@ -4,7 +4,6 @@
 namespace app\models;
 
 
-use Exception;
 
 class Pult
 {
@@ -61,7 +60,7 @@ class Pult
                 $modelKR = new Dinner2Model("KR");
                 $modelEN = new Dinner2Model("EN");
                 break;
-            case $currentTime >= $this->intervals["snack"]["start"] && $currentTime < $this->intervals["snack"]["end"]:
+            case $currentTime >= $this->intervals["snack"]["start"] || $currentTime < $this->intervals["snack"]["end"]:
                 $modelHU = new SnackModel("HU");
                 $modelUA = new SnackModel("UA");
                 $modelKR = new SnackModel("KR");
