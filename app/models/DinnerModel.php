@@ -19,7 +19,6 @@ class DinnerModel extends MenuModel
     public function __construct(string $language)
     {
         parent::__construct($language);
-        $this->filename = null;
         $this->type = "Dinner";
     }
 

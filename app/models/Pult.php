@@ -33,7 +33,7 @@ class Pult
         $currentDay = date('N');
         $currentTime = date('H:i:s');
         $breakfastEnd = $this->intervals['breakfast']['end'];
-        if ($currentDay === 6 || $currentDay === 7) {
+        if ($currentDay === "6" || $currentDay === "7") {
             $breakfastEnd = $this->intervals['breakfast']['weekend'];
         }
         switch ($currentTime) {
@@ -88,7 +88,8 @@ class Pult
         return [];
     }
 
-    public function getJSON() {
+    public function getJSON()
+    {
         return json_encode($this->getSlide(), JSON_UNESCAPED_UNICODE);
     }
 }

@@ -17,35 +17,18 @@ class BreakfastModel extends MenuModel
     public function __construct(string $language)
     {
         parent::__construct($language);
-        $this->filename = './' . $this->WEEK . '_Het_Reggeli.xls';
         $this->type = 'Breakfast';
     }
 
     public function getCoordinates(int $pult): array
     {
-        $nameCoordinate = null;
-        $priceCoordinate = null;
 
-        $coordinates = ["HU" => [
-            "Monday" => ["B2", "L2"],
-            "Tuesday" => ["B3", "L3"],
-            "Wednesday" => ["B4", "L4"],
-            "Thursday" => ["B5", "L5"],
-            "Friday" => ["B6", "L6"],
-            "Saturday" => ["B7", "L7"],
-            "Sunday" => ["B8", "L8"]
-        ], "DE" => [
-            "Monday" => ["G2", "L2"],
-            "Tuesday" => ["G3", "L3"],
-            "Wednesday" => ["G4", "L4"],
-            "Thursday" => ["G5", "L5"],
-            "Friday" => ["G6", "L6"],
-            "Saturday" => ["G7", "L7"],
-            "Sunday" => ["G8", "L8"]
-        ]];
+        $path = './breakfast_coordinates.json';
+        $str = file_get_contents($path);
+        $coordinates = json_decode($str, true);
 
-        return ["main" => $coordinates[$this->language][$this->TODAY][0],
-            "price" => $coordinates[$this->language][$this->TODAY][1]];
+        return ["main" => $coordinates[$pult][$this->TODAY]["main"],
+            "price" => $coordinates[$pult][$this->TODAY]["price"]];
     }
 
 }

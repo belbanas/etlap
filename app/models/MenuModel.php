@@ -30,13 +30,12 @@ class MenuModel
         $this->TODAY = date('l');
         $this->WEEK = date('W');
         $this->reader = IOFactory::createReader("Xlsx");
+        $this->filename = './etlapok/' . $this->WEEK . '_Het_HU.xls';
     }
 
     /**
      * @param int $pult a pult sorszáma
      * @return string[]
-     * az első koordináta az étel neve a második pedig az ára az excel táblában,
-     * külön definiálva minden étkezéshez
      */
     public function getCoordinates(int $pult): ?array
     {
