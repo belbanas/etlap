@@ -103,7 +103,7 @@ const DOM = {
         const urlParams = new URLSearchParams(queryString);
         const id = urlParams.get('id');
         DOM.containers.pultNameContainer.innerHTML = id;
-        fetch('/json-output?id=' + id)
+        fetch('/json_output.php?id=' + id)
             .then(response => response.json())
             .then(json_response => {
                 console.log(json_response);
