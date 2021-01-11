@@ -33,6 +33,8 @@ const DOM = {
         container: document.querySelector('.container'),
         soupPicContainer: document.querySelector('#soup-pic'),
         mainPicContainer: document.querySelector('#main-pic'),
+        defaultLanguageFoodContainer: document.querySelector('#default-language-food'),
+        defaultLanguageSoupContainer: document.querySelector('#default-language-soup'),
     },
     slideshow: function (json) {
         if (json.length === 0) {
@@ -115,8 +117,13 @@ const DOM = {
                     DOM.foodList.soupUA = json_response.UA.soup;
                     DOM.foodList.soupKR = json_response.KR.soup;
                     DOM.containers.priceContainer.innerHTML = json_response.HU.price + " HUF";
-                    DOM.containers.soupContainer.innerHTML = DOM.foodList.soupHU;
-                    DOM.containers.foodContainer.innerHTML = DOM.foodList.foodHU;
+                    if (id === "4" ) {
+                        DOM.containers.defaultLanguageSoupContainer.innerHTML = DOM.foodList.soupKR;
+                        DOM.containers.defaultLanguageFoodContainer.innerHTML = DOM.foodList.foodKR;
+                    } else {
+                        DOM.containers.defaultLanguageSoupContainer.innerHTML = DOM.foodList.soupHU;
+                        DOM.containers.defaultLanguageFoodContainer.innerHTML = DOM.foodList.foodHU;
+                    }
                     DOM.containers.soupPicContainer.src = "kepek/" + json_response.HU.soupPic;
                     DOM.containers.mainPicContainer.src = "kepek/" + json_response.HU.mainPic;
                     console.log(DOM.foodList.soupHU);

@@ -27,7 +27,7 @@ body {
 }
 
 p {
-    padding: 3.5rem;
+    padding: 1rem;
 }
 
 .header {
@@ -76,4 +76,8 @@ button {
 
 #soup-pic, #main-pic {
     max-width: 15rem;
+}
+
+#soup-name, #food-name {
+    font-size: 2rem;
 }
