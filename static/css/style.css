@@ -24,12 +24,12 @@ body {
     text-align: center;
     font-weight: bold;
     font-size: 2.5rem;
-    background: chartreuse;
+    /*background: #efefef;*/
     width: 40%;
 }
 
 .pictures {
-    background: aqua;
+    /*background: aqua;*/
     height: 100%;
     width: 60%;
 }
@@ -58,12 +58,13 @@ p {
 
 .flag-container {
     position: absolute;
-    background-color: deeppink;
+    /*background-color: deeppink;*/
     max-height: 3.5rem;
     max-width: 7rem;
     margin-top: 0.5rem;
     margin-left: 40rem;
     font-size: 1rem;
+    /*border: 1px solid black;*/
 }
 
 #close-flag {
