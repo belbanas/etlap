@@ -86,7 +86,7 @@ const DOM = {
                     case sec === 0:
                         location.reload();
                         break;
-                    case sec >= 1 && sec < 20:
+                    case (sec >= 0.5 && sec < 5) || (sec >= 15 && sec < 20) || (sec >= 30 && sec < 35) || (sec >= 45 && sec < 50):
                         if (id === "4") {
                             DOM.containers.soupContainer.innerHTML = DOM.foodList.soupHU
                             DOM.containers.foodContainer.innerHTML = DOM.foodList.foodHU
@@ -97,18 +97,18 @@ const DOM = {
                             DOM.containers.flagContainer.innerHTML = DOM.flagList.KR
                         }
                         break;
-                    case sec >= 20 && sec < 40:
+                    case (sec >= 5 && sec < 10) || (sec >= 20 && sec < 25) || (sec >= 35 && sec < 40) || (sec >= 50 && sec < 55):
                         DOM.containers.soupContainer.innerHTML = DOM.foodList.soupEN
                         DOM.containers.foodContainer.innerHTML = DOM.foodList.foodEN
                         DOM.containers.flagContainer.innerHTML = DOM.flagList.EN
                         break;
-                    case sec >= 40:
+                    case (sec >= 10 && sec < 15) || (sec >= 25 && sec < 30) || (sec >= 40 && sec < 45) || sec >= 55:
                         DOM.containers.soupContainer.innerHTML = DOM.foodList.soupUA
                         DOM.containers.foodContainer.innerHTML = DOM.foodList.foodUA
                         DOM.containers.flagContainer.innerHTML = DOM.flagList.UA
                         break;
                 }
-            }, 1000)
+            }, 100)
         }
     },
     fetchData: () => {
@@ -116,7 +116,7 @@ const DOM = {
         const urlParams = new URLSearchParams(queryString);
         const id = urlParams.get('id');
         if (id === "4") {
-            DOM.containers.pultNameContainer.innerHTML = "KOREAN";
+            DOM.containers.pultNameContainer.innerHTML = "ASIAN";
             DOM.containers.mainFlagContainer.innerHTML = DOM.flagList.KR;
         } else {
             DOM.containers.pultNameContainer.innerHTML = "EUROPEAN " + id;
@@ -136,7 +136,7 @@ const DOM = {
                     DOM.foodList.soupUA = json_response.UA.soup;
                     DOM.foodList.soupKR = json_response.KR.soup;
                     DOM.containers.priceContainer.innerHTML = json_response.HU.price + " HUF";
-                    if (id === "4" ) {
+                    if (id === "4") {
                         DOM.containers.defaultLanguageSoupContainer.innerHTML = DOM.foodList.soupKR;
                         DOM.containers.defaultLanguageFoodContainer.innerHTML = DOM.foodList.foodKR;
                     } else {
