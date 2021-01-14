@@ -73,7 +73,7 @@ const DOM = {
                         DOM.containers.closeSignContainer.innerHTML = DOM.closeList.closedKR
                         break;
                 }
-            }, 1000)
+            }, 100)
         } else {
             setInterval(() => {
                 let now = new Date();
@@ -87,7 +87,7 @@ const DOM = {
                         location.reload();
                         break;
                     case (sec >= 0.5 && sec < 5) || (sec >= 15 && sec < 20) || (sec >= 30 && sec < 35) || (sec >= 45 && sec < 50):
-                        if (id === "4") {
+                        if (id === "1") {
                             DOM.containers.soupContainer.innerHTML = DOM.foodList.soupHU
                             DOM.containers.foodContainer.innerHTML = DOM.foodList.foodHU
                             DOM.containers.flagContainer.innerHTML = DOM.flagList.HU
@@ -115,7 +115,7 @@ const DOM = {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const id = urlParams.get('id');
-        if (id === "4") {
+        if (id === "1") {
             DOM.containers.pultNameContainer.innerHTML = "ASIAN";
             DOM.containers.mainFlagContainer.innerHTML = DOM.flagList.KR;
         } else {
@@ -136,7 +136,7 @@ const DOM = {
                     DOM.foodList.soupUA = json_response.UA.soup;
                     DOM.foodList.soupKR = json_response.KR.soup;
                     DOM.containers.priceContainer.innerHTML = json_response.HU.price + " HUF";
-                    if (id === "4") {
+                    if (id === "1") {
                         DOM.containers.defaultLanguageSoupContainer.innerHTML = DOM.foodList.soupKR;
                         DOM.containers.defaultLanguageFoodContainer.innerHTML = DOM.foodList.foodKR;
                     } else {

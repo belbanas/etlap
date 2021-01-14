@@ -79,7 +79,6 @@ class Pult
                     "EN" => $modelEN->getFood($this->id),
                 ];
             } else {
-                echo "ez";
                 return [];
             }
         }
