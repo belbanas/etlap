@@ -11,42 +11,71 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     height: 100vh;
+    overflow: hidden;
 }
 
 .main-content {
-    display: grid;
-    place-items: center;
-    height: 75%;
-    background: yellow;
+    display: flex;
+    height: 80%;
+    background: #fff;
 }
 
 .container {
     text-align: center;
     font-weight: bold;
-    font-size: 4rem;
+    font-size: 2.5rem;
+    background: chartreuse;
+    width: 40%;
+}
+
+.pictures {
+    background: aqua;
+    height: 100%;
+    width: 60%;
 }
 
 p {
-    padding: 1rem;
+    /*padding: 0.5rem;*/
+    /*background-color: white;*/
 }
 
 .header {
     width: 100vw;
-    height: 25%;
-    background: red;
-    display: grid;
-    place-items: center;
+    height: 20%;
+    background: #464646;
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    color: white;
 }
 
 #logo {
     position: absolute;
     margin-top: -1rem;
     margin-left: 1rem;
-    height: 24rem;
+    height: 20rem;
 }
 
-#flag {
-    margin-top: 2.5rem;
+.flag-container {
+    position: absolute;
+    background-color: deeppink;
+    max-height: 3.5rem;
+    max-width: 7rem;
+    margin-top: 0.5rem;
+    margin-left: 40rem;
+    font-size: 1rem;
+}
+
+#close-flag {
+    max-width: 15rem;
+}
+
+#close-sign {
+    text-align: center;
+    margin-top: 14rem;
+    font-size: 6rem;
+    font-weight: bold;
+    color: #464646;
 }
 
 #pult-name {
@@ -74,10 +103,26 @@ button {
     font-size: 1.5rem;
 }
 
-#soup-pic, #main-pic {
-    max-width: 15rem;
+#main-pic, .flag {
+    height: 100%;
+    width: 100%;
 }
 
-#soup-name, #food-name {
-    font-size: 2rem;
+.line {
+    background-color: #464646;
+    height: 0.5%;
+    width: 60%;
+    margin-left: 20%;
 }
+
+.foods {
+    /*padding: 7rem 0 3rem 0;*/
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    height: 49%;
+    /*border: 1px solid #fff;*/
+    padding: 3rem 1rem 0 1rem;
+    color: #434343;
+}
+

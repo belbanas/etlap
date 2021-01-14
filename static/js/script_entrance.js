@@ -19,22 +19,27 @@ const DOM = {
         closedEN: "CLOSED",
     },
     flagList: {
-        HU: "magyar zászló",
-        EN: `<img src="/static/images/flag_EN.png" alt="English flag">`,
-        UA: "ukrán zászló",
-        KR: "koreai zászló",
+        HU: `<img src="/static/images/flag_HU.png" alt="Hungarian flag" class="flag">`,
+        EN: `<img src="/static/images/flag_EN.png" alt="English flag" class="flag">`,
+        UA: `<img src="/static/images/flag_UA.png" alt="Ukrainian flag" class="flag">`,
+        KR: `<img src="/static/images/flag_KR.png" alt="Korean flag" class="flag">`,
     },
     containers: {
+        body: document.querySelector('body'),
+        mainContent: document.querySelector('.main-content'),
         soupContainer: document.querySelector('#soup-name'),
         foodContainer: document.querySelector('#food-name'),
         priceContainer: document.querySelector('#food-price'),
         pultNameContainer: document.querySelector('#pult-name'),
         flagContainer: document.querySelector('#flag'),
+        mainFlagContainer: document.querySelector('#main-flag'),
+        closeFlagContainer: document.querySelector('#close-flag'),
         container: document.querySelector('.container'),
         soupPicContainer: document.querySelector('#soup-pic'),
         mainPicContainer: document.querySelector('#main-pic'),
         defaultLanguageFoodContainer: document.querySelector('#default-language-food'),
         defaultLanguageSoupContainer: document.querySelector('#default-language-soup'),
+        closeSignContainer: document.querySelector('#close-sign'),
     },
     slideshow: function (json) {
         if (json.length === 0) {
@@ -48,20 +53,24 @@ const DOM = {
                         location.reload();
                         break;
                     case sec >= 1 && sec < 15:
-                        DOM.containers.container.innerHTML = DOM.closeList.closedHU
-                        DOM.containers.flagContainer.innerHTML = DOM.flagList.HU
+                        DOM.containers.mainContent.innerHTML = ""
+                        DOM.containers.closeFlagContainer.innerHTML = DOM.flagList.HU
+                        DOM.containers.closeSignContainer.innerHTML = DOM.closeList.closedHU
                         break;
                     case sec >= 15 && sec < 30:
-                        DOM.containers.container.innerHTML = DOM.closeList.closedEN
-                        DOM.containers.flagContainer.innerHTML = DOM.flagList.EN
+                        DOM.containers.mainContent.innerHTML = ""
+                        DOM.containers.closeFlagContainer.innerHTML = DOM.flagList.EN
+                        DOM.containers.closeSignContainer.innerHTML = DOM.closeList.closedEN
                         break;
                     case sec >= 30 && sec < 45:
-                        DOM.containers.container.innerHTML = DOM.closeList.closedUA
-                        DOM.containers.flagContainer.innerHTML = DOM.flagList.UA
+                        DOM.containers.mainContent.innerHTML = ""
+                        DOM.containers.closeFlagContainer.innerHTML = DOM.flagList.UA
+                        DOM.containers.closeSignContainer.innerHTML = DOM.closeList.closedUA
                         break;
                     case sec >= 45:
-                        DOM.containers.container.innerHTML = DOM.closeList.closedKR
-                        DOM.containers.flagContainer.innerHTML = DOM.flagList.KR
+                        DOM.containers.mainContent.innerHTML = ""
+                        DOM.containers.closeFlagContainer.innerHTML = DOM.flagList.KR
+                        DOM.containers.closeSignContainer.innerHTML = DOM.closeList.closedKR
                         break;
                 }
             }, 1000)
@@ -70,29 +79,33 @@ const DOM = {
                 let now = new Date();
                 let sec = now.getSeconds()
                 console.log(sec)
+                const queryString = window.location.search;
+                const urlParams = new URLSearchParams(queryString);
+                const id = urlParams.get('id');
                 switch (true) {
                     case sec === 0:
                         location.reload();
                         break;
-                    case sec >= 1 && sec < 15:
-                        DOM.containers.soupContainer.innerHTML = DOM.foodList.soupHU
-                        DOM.containers.foodContainer.innerHTML = DOM.foodList.foodHU
-                        DOM.containers.flagContainer.innerHTML = DOM.flagList.HU
+                    case sec >= 1 && sec < 20:
+                        if (id === "4") {
+                            DOM.containers.soupContainer.innerHTML = DOM.foodList.soupHU
+                            DOM.containers.foodContainer.innerHTML = DOM.foodList.foodHU
+                            DOM.containers.flagContainer.innerHTML = DOM.flagList.HU
+                        } else {
+                            DOM.containers.soupContainer.innerHTML = DOM.foodList.soupKR
+                            DOM.containers.foodContainer.innerHTML = DOM.foodList.foodKR
+                            DOM.containers.flagContainer.innerHTML = DOM.flagList.KR
+                        }
                         break;
-                    case sec >= 15 && sec < 30:
+                    case sec >= 20 && sec < 40:
                         DOM.containers.soupContainer.innerHTML = DOM.foodList.soupEN
                         DOM.containers.foodContainer.innerHTML = DOM.foodList.foodEN
                         DOM.containers.flagContainer.innerHTML = DOM.flagList.EN
                         break;
-                    case sec >= 30 && sec < 45:
+                    case sec >= 40:
                         DOM.containers.soupContainer.innerHTML = DOM.foodList.soupUA
                         DOM.containers.foodContainer.innerHTML = DOM.foodList.foodUA
                         DOM.containers.flagContainer.innerHTML = DOM.flagList.UA
-                        break;
-                    case sec >= 45:
-                        DOM.containers.soupContainer.innerHTML = DOM.foodList.soupKR
-                        DOM.containers.foodContainer.innerHTML = DOM.foodList.foodKR
-                        DOM.containers.flagContainer.innerHTML = DOM.flagList.KR
                         break;
                 }
             }, 1000)
@@ -102,7 +115,13 @@ const DOM = {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const id = urlParams.get('id');
-        DOM.containers.pultNameContainer.innerHTML = id;
+        if (id === "4") {
+            DOM.containers.pultNameContainer.innerHTML = "KOREAN";
+            DOM.containers.mainFlagContainer.innerHTML = DOM.flagList.KR;
+        } else {
+            DOM.containers.pultNameContainer.innerHTML = "EUROPEAN " + id;
+            DOM.containers.mainFlagContainer.innerHTML = DOM.flagList.HU;
+        }
         fetch('/json_output.php?id=' + id)
             .then(response => response.json())
             .then(json_response => {
@@ -124,7 +143,7 @@ const DOM = {
                         DOM.containers.defaultLanguageSoupContainer.innerHTML = DOM.foodList.soupHU;
                         DOM.containers.defaultLanguageFoodContainer.innerHTML = DOM.foodList.foodHU;
                     }
-                    DOM.containers.soupPicContainer.src = "kepek/" + json_response.HU.soupPic;
+                    // DOM.containers.soupPicContainer.src = "kepek/" + json_response.HU.soupPic;
                     DOM.containers.mainPicContainer.src = "kepek/" + json_response.HU.mainPic;
                     console.log(DOM.foodList.soupHU);
                 }

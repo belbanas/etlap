@@ -4,7 +4,6 @@
 namespace app\models;
 
 
-
 class Pult
 {
     private ?int $id;
@@ -60,7 +59,7 @@ class Pult
                 $modelKR = new Dinner2Model("KR");
                 $modelEN = new Dinner2Model("EN");
                 break;
-            case $currentTime >= $this->intervals["snack"]["start"] || $currentTime < $this->intervals["snack"]["end"]:
+            case ($currentTime >= $this->intervals["snack"]["start"] && $currentTime < $this->intervals["snack"]["end"]) || $currentTime < $this->intervals["breakfast"]["start"]:
                 $modelHU = new SnackModel("HU");
                 $modelUA = new SnackModel("UA");
                 $modelKR = new SnackModel("KR");
