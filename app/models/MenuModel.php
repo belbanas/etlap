@@ -17,6 +17,7 @@ class MenuModel
     private IReader $reader;
     protected string $type;
     protected string $language;
+    protected string $coordinateFile;
 
 
     /**
@@ -39,7 +40,13 @@ class MenuModel
      */
     public function getCoordinates(int $pult): ?array
     {
-        return null;
+        $str = file_get_contents($this->coordinateFile);
+        $coordinates = json_decode($str, true);
+
+        return [
+            "start" => $coordinates[$pult][$this->TODAY]["start"],
+            "end" => $coordinates[$pult][$this->TODAY]["end"],
+        ];
     }
 
     public function getFood(int $pult): ?Food
