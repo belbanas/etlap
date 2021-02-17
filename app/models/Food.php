@@ -21,6 +21,7 @@ class Food implements JsonSerializable
      * Food constructor.
      * @param string|null $soup
      * @param string|null $mainCourse
+     * @param string|null $secondCourse
      * @param int|null $price
      * @param string $type
      * @param string $day
