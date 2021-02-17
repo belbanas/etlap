@@ -32,6 +32,12 @@ class MenuModel
         $this->WEEK = date('W');
         $this->reader = IOFactory::createReader("Xlsx");
         $this->filename = './etlapok/' . $this->WEEK . '_Het_HU.xls';
+
+        $currentTime = date('H:i:s');
+        $yesterday = date("l", strtotime("yesterday"));
+        if ($currentTime < "01:30:00") {
+            $this->TODAY = $yesterday;
+        }
     }
 
     /**

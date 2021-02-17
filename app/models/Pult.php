@@ -59,7 +59,8 @@ class Pult
                 $modelKR = new Dinner2Model("KR");
                 $modelEN = new Dinner2Model("EN");
                 break;
-            case ($currentTime >= $this->intervals["snack"]["start"] && $currentTime < $this->intervals["snack"]["end"]) || $currentTime < $this->intervals["breakfast"]["start"]:
+            case ($currentTime >= $this->intervals["snack"]["start"] && $currentTime < $this->intervals["snack"]["end"])
+                || ($currentTime >= $this->intervals["snack2"]["start"] && $currentTime < $this->intervals["snack2"]["end"]):
                 $modelHU = new SnackModel("HU");
                 $modelUA = new SnackModel("UA");
                 $modelKR = new SnackModel("KR");
@@ -68,7 +69,6 @@ class Pult
             default:
                 return [];
         }
-
 
         if ($modelHU != null && $modelUA != null && $modelKR != null && $modelEN != null) {
             if ($modelHU->getFood($this->id)->getSoup() != null) {
