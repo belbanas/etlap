@@ -1,7 +1,7 @@
 {
   "1": {
     "Monday" : {"start": "D14", "end": "Q14"},
-    "Tuesday" : {"start": "D30", "end": "D30"},
+    "Tuesday" : {"start": "D30", "end": "Q30"},
     "Wednesday" : {"start": "D46", "end": "Q46"},
     "Thursday" : {"start": "D62", "end": "Q62"},
     "Friday" : {"start": "D78", "end": "Q78"},
