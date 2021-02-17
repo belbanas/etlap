@@ -27,11 +27,8 @@ class BreakfastModel extends MenuModel
         $coordinates = json_decode($str, true);
 
         return [
-            "soup" => $coordinates[$pult][$this->TODAY]["soup"],
-            "main" => $coordinates[$pult][$this->TODAY]["main"],
-            "second" => $coordinates[$pult][$this->TODAY]["second"],
-            "price" => $coordinates[$pult][$this->TODAY]["price"],
-            "picture" => $coordinates[$pult][$this->TODAY]["picture"],
+            "start" => $coordinates[$pult][$this->TODAY]["start"],
+            "end" => $coordinates[$pult][$this->TODAY]["end"],
         ];
     }
 
