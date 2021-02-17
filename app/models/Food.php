@@ -6,8 +6,8 @@ use JsonSerializable;
 
 class Food implements JsonSerializable
 {
-    private ?string $mainCourse;
     private ?string $soup;
+    private ?string $mainCourse;
     private ?string $secondCourse;
     private ?string $price;
     private string $type;
