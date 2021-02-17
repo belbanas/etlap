@@ -49,6 +49,10 @@ class MenuModel
         ];
     }
 
+    /**
+     * @param int $pult
+     * @return Food|null
+     */
     public function getFood(int $pult): ?Food
     {
         try {
