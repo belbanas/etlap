@@ -149,7 +149,7 @@ const DOM = {
                     DOM.foodList.food2EN = json_response.EN["second"];
                     DOM.foodList.food2UA = json_response.UA["second"];
                     DOM.foodList.food2KR = json_response.KR["second"];
-                    DOM.containers.priceContainer.innerHTML = json_response.HU.price + " HUF";
+                    DOM.containers.priceContainer.innerHTML = json_response.HU.price;
                     if (id === "1") {
                         DOM.containers.defaultLanguageSoupContainer.innerHTML = DOM.foodList.soupKR;
                         DOM.containers.defaultLanguageFoodContainer.innerHTML = DOM.foodList.foodKR;
@@ -161,6 +161,7 @@ const DOM = {
                     }
                     // DOM.containers.soupPicContainer.src = "kepek/" + json_response.HU.soupPic;
                     DOM.containers.mainPicContainer.src = "kepek/" + json_response.HU.mainPic;
+                    // DOM.containers.mainPicContainer.src = "kepek/tarhonyaleves.jpg";
                     console.log(DOM.foodList.soupHU);
                 }
                 DOM.slideshow(json_response);
