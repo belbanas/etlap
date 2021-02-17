@@ -8,6 +8,7 @@ class Food implements JsonSerializable
 {
     private ?string $mainCourse;
     private ?string $soup;
+    private ?string $secondCourse;
     private ?int $price;
     private string $type;
     private string $day;
@@ -26,10 +27,11 @@ class Food implements JsonSerializable
      * @param string $language
      * @param int $pult
      */
-    public function __construct(?string $soup, ?string $mainCourse, ?int $price, string $type, string $day, string $language, int $pult)
+    public function __construct(?string $soup, ?string $mainCourse, ?string $secondCourse, ?int $price, string $type, string $day, string $language, int $pult)
     {
-        $this->mainCourse = $mainCourse;
         $this->soup = $soup;
+        $this->mainCourse = $mainCourse;
+        $this->secondCourse = $secondCourse;
         $this->price = $price;
         $this->type = $type;
         $this->day = $day;
@@ -143,6 +145,23 @@ class Food implements JsonSerializable
     {
         $this->mainCoursePicture = $mainCoursePicture;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getSecondCourse(): ?string
+    {
+        return $this->secondCourse;
+    }
+
+    /**
+     * @param string|null $secondCourse
+     */
+    public function setSecondCourse(?string $secondCourse): void
+    {
+        $this->secondCourse = $secondCourse;
+    }
+
 
 
     public function jsonSerialize()
