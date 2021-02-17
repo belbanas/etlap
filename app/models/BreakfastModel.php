@@ -31,6 +31,7 @@ class BreakfastModel extends MenuModel
             "main" => $coordinates[$pult][$this->TODAY]["main"],
             "second" => $coordinates[$pult][$this->TODAY]["second"],
             "price" => $coordinates[$pult][$this->TODAY]["price"],
+            "picture" => $coordinates[$pult][$this->TODAY]["picture"],
         ];
     }
 
