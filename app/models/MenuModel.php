@@ -101,7 +101,7 @@ class MenuModel
 
         $food = new Food($soup, $main, $second, $price, $this->type, $this->TODAY, $this->language, $pult);
 
-//        $this->setPictureFilename($food);
+        $this->setPictureFilename($food);
 
 //        if ($this->language != "HU") {
 //            $this->translateFood($food);

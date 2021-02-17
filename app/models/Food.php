@@ -169,8 +169,9 @@ class Food implements JsonSerializable
     {
         // TODO: Implement jsonSerialize() method.
         return [
-            "main" => $this->mainCourse,
             "soup" => $this->soup,
+            "main" => $this->mainCourse,
+            "second" => $this->secondCourse,
             "price" => $this->price,
             "type" => $this->type,
             "day" => $this->day,
