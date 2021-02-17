@@ -54,63 +54,73 @@ class MenuModel
         $mainCoordinate = $this->getCoordinates($pult)["main"];
         $secondCoordinate = $this->getCoordinates($pult)["second"];
         $priceCoordinate = $this->getCoordinates($pult)["price"];
+        $pictureCoordinate = $this->getCoordinates($pult)["picture"];
         $soup = "";
         $main = "";
         $second = "";
-        $price = 0;
+        $price = "";
+        $picture = "";
         try {
-            $soup = $spreadsheet->getActiveSheet()->getCell($soupCoordinate)->getCalculatedValue();
+            $soup = $spreadsheet->getSheet(0)->getCell($soupCoordinate)->getCalculatedValue();
         } catch (\PhpOffice\PhpSpreadsheet\Calculation\Exception $e) {
 //            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (LEVES) ';
         } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
 //            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (LEVES) ';
         }
         try {
-            $main = $spreadsheet->getActiveSheet()->getCell($mainCoordinate)->getCalculatedValue();
+            $main = $spreadsheet->getSheet(0)->getCell($mainCoordinate)->getCalculatedValue();
         } catch (\PhpOffice\PhpSpreadsheet\Calculation\Exception $e) {
-            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (FŐÉTEL) ';
+//            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (FŐÉTEL) ';
         } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
-            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (FŐÉTEL) ';
+//            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (FŐÉTEL) ';
         }
         try {
-            $second = $spreadsheet->getActiveSheet()->getCell($secondCoordinate)->getCalculatedValue();
+            $second = $spreadsheet->getSheet(0)->getCell($secondCoordinate)->getCalculatedValue();
         } catch (\PhpOffice\PhpSpreadsheet\Calculation\Exception $e) {
-            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (ÁR) ';
+//            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (ÁR) ';
         } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
-            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (ÁR) ';
+//            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (ÁR) ';
         }
         try {
-            $price = $spreadsheet->getActiveSheet()->getCell($priceCoordinate)->getCalculatedValue();
+            $price = $spreadsheet->getSheet(0)->getCell($priceCoordinate)->getCalculatedValue();
         } catch (\PhpOffice\PhpSpreadsheet\Calculation\Exception $e) {
-            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (ÁR) ';
+//            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (ÁR) ';
         } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
-            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (ÁR) ';
+//            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (ÁR) ';
+        }
+        try {
+            $picture = $spreadsheet->getSheet(0)->getCell($pictureCoordinate)->getCalculatedValue();
+        } catch (\PhpOffice\PhpSpreadsheet\Calculation\Exception $e) {
+//            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (ÁR) ';
+        } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
+//            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (ÁR) ';
         }
 
 
-//        if ($soup == null) {
-//            $soup = "";
-//        } else if ($main === null) {
-//            $main = "";
-//        } else if ($second === null) {
-//            $second = "";
-//        }
-//        if ($soupCoordinate === null || $priceCoordinate === null) {
-//            $soup = null;
-//        }
+        if ($soup == null) {
+            $soup = "";
+        } else if ($main === null) {
+            $main = "";
+        } else if ($second === null) {
+            $second = "";
+        }
+        if ($soupCoordinate === null || $priceCoordinate === null) {
+            $soup = null;
+        }
 
         $food = new Food($soup, $main, $second, $price, $this->type, $this->TODAY, $this->language, $pult);
+        $food->setMainCoursePicture($picture);
 
-        $this->setPictureFilename($food);
+//        $this->setPictureFilename($food);
 
-//        if ($this->language != "HU") {
-//            $this->translateFood($food);
-//            return $food;
-//        } else {
-//            return $food;
-//        }
+        if ($this->language != "HU") {
+            $this->translateFood($food);
+            return $food;
+        } else {
+            return $food;
+        }
 
-        return $food;
+//        return $food;
     }
 
     public function setPictureFilename(Food $food)
@@ -135,10 +145,11 @@ class MenuModel
     {
         $soup = $food->getSoup();
         $main = $food->getMainCourse();
-        $translateTable = "./etlapok/forditotabla.xlsx";
+//        $translateTable = "./etlapok/forditotabla.xlsx";
+        $translateTable = $this->filename;
 
         $spreadsheet = $this->reader->load($translateTable);
-        $dataArray = $spreadsheet->getSheet(0)->rangeToArray('A1:D60', null, true, true, false);
+        $dataArray = $spreadsheet->getSheet(1)->rangeToArray('B2:E60', null, true, true, false);
 
 
         foreach ($dataArray as $key => $value) {
