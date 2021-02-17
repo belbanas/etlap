@@ -57,7 +57,11 @@ class MenuModel
 
         $startCoordinate = $this->getCoordinates($pult)["start"];
         $endCoordinate = $this->getCoordinates($pult)["end"];
-        $foodArray = $spreadsheet->getSheet(2)->rangeToArray($startCoordinate . ":" . $endCoordinate, null, true, true, false)[0];
+        try {
+            $foodArray = $spreadsheet->getSheet(2)->rangeToArray($startCoordinate . ":" . $endCoordinate, null, true, true, false)[0];
+        } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
+            $foodArray = [];
+        }
 
         if ($this->language === "HU") {
             $soup = $foodArray[0];
