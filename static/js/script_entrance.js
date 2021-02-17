@@ -150,7 +150,7 @@ const DOM = {
                     DOM.foodList.food2UA = json_response.UA["second"];
                     DOM.foodList.food2KR = json_response.KR["second"];
                     DOM.containers.priceContainer.innerHTML = json_response.HU.price;
-                    if (id === "1") {
+                    if (id === "4") {
                         DOM.containers.defaultLanguageSoupContainer.innerHTML = DOM.foodList.soupKR;
                         DOM.containers.defaultLanguageFoodContainer.innerHTML = DOM.foodList.foodKR;
                         DOM.containers.defaultLanguageFood2Container.innerHTML = DOM.foodList.food2KR;
