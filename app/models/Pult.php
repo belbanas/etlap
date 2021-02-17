@@ -71,7 +71,7 @@ class Pult
 
 
         if ($modelHU != null && $modelUA != null && $modelKR != null && $modelEN != null) {
-            if ($modelHU->getFood($this->id)->getMainCourse() != null) {
+            if ($modelHU->getFood($this->id)->getSoup() != null) {
                 return [
                     "HU" => $modelHU->getFood($this->id),
                     "UA" => $modelUA->getFood($this->id),
