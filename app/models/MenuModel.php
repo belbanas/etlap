@@ -48,13 +48,15 @@ class MenuModel
             $spreadsheet = $this->reader->load($this->filename);
         } catch (InvalidArgumentException $e) {
             echo $e->getMessage() . ' Nem található az excel fájl a következőhöz: ' . $this->type . $this->language . " ";
-            return new Food("Missing Soup", "Missign Main Course", 0, $this->type, $this->TODAY, $this->language, $pult);
+            return new Food("Missing Soup", "Missing Main Course", "Missing second course", 0, $this->type, $this->TODAY, $this->language, $pult);
         }
         $soupCoordinate = $this->getCoordinates($pult)["soup"];
         $mainCoordinate = $this->getCoordinates($pult)["main"];
+        $secondCoordinate = $this->getCoordinates($pult)["second"];
         $priceCoordinate = $this->getCoordinates($pult)["price"];
         $soup = "";
         $main = "";
+        $second = "";
         $price = 0;
         try {
             $soup = $spreadsheet->getActiveSheet()->getCell($soupCoordinate)->getCalculatedValue();
@@ -71,6 +73,13 @@ class MenuModel
             echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (FŐÉTEL) ';
         }
         try {
+            $second = $spreadsheet->getActiveSheet()->getCell($secondCoordinate)->getCalculatedValue();
+        } catch (\PhpOffice\PhpSpreadsheet\Calculation\Exception $e) {
+            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (ÁR) ';
+        } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
+            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (ÁR) ';
+        }
+        try {
             $price = $spreadsheet->getActiveSheet()->getCell($priceCoordinate)->getCalculatedValue();
         } catch (\PhpOffice\PhpSpreadsheet\Calculation\Exception $e) {
             echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (ÁR) ';
@@ -79,23 +88,29 @@ class MenuModel
         }
 
 
-        if ($soup == null) {
-            $soup = "";
-        }
-        if ($soupCoordinate === null || $priceCoordinate === null) {
-            $soup = null;
-        }
+//        if ($soup == null) {
+//            $soup = "";
+//        } else if ($main === null) {
+//            $main = "";
+//        } else if ($second === null) {
+//            $second = "";
+//        }
+//        if ($soupCoordinate === null || $priceCoordinate === null) {
+//            $soup = null;
+//        }
 
-        $food = new Food($soup, $main, $price, $this->type, $this->TODAY, $this->language, $pult);
+        $food = new Food($soup, $main, $second, $price, $this->type, $this->TODAY, $this->language, $pult);
 
-        $this->setPictureFilename($food);
+//        $this->setPictureFilename($food);
 
-        if ($this->language != "HU") {
-            $this->translateFood($food);
-            return $food;
-        } else {
-            return $food;
-        }
+//        if ($this->language != "HU") {
+//            $this->translateFood($food);
+//            return $food;
+//        } else {
+//            return $food;
+//        }
+
+        return $food;
     }
 
     public function setPictureFilename(Food $food)
