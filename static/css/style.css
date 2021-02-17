@@ -116,17 +116,17 @@ button {
 
 .line {
     background-color: #464646;
-    height: 0.5%;
+    height: 0.4rem;
     width: 60%;
     margin-left: 20%;
 }
 
 .line2 {
     background-color: #464646;
-    height: 0.5%;
+    height: 0.4rem;
     width: 40%;
     margin-left: 30%;
-    margin-top: -0.3rem;
+    margin-top: -0.25rem;
 }
 
 .foods {
@@ -143,11 +143,11 @@ button {
 #food-price {
     text-align: center;
     font-weight: bold;
-    font-size: 2.5rem;
+    font-size: 4.5rem;
     display: flex;
     flex-flow: column;
     justify-content: space-evenly;
     color: #434343;
-    padding: 2rem;
+    padding: 1rem;
 }
 
