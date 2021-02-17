@@ -93,7 +93,7 @@ const DOM = {
                         location.reload();
                         break;
                     case (sec >= 0.5 && sec < 5) || (sec >= 15 && sec < 20) || (sec >= 30 && sec < 35) || (sec >= 45 && sec < 50):
-                        if (id === "1") {
+                        if (id === "4") {
                             DOM.containers.soupContainer.innerHTML = DOM.foodList.soupHU
                             DOM.containers.foodContainer.innerHTML = DOM.foodList.foodHU
                             DOM.containers.food2Container.innerHTML = DOM.foodList.food2HU
@@ -125,7 +125,7 @@ const DOM = {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const id = urlParams.get('id');
-        if (id === "1") {
+        if (id === "4") {
             DOM.containers.pultNameContainer.innerHTML = "ASIAN";
             DOM.containers.mainFlagContainer.innerHTML = DOM.flagList.KR;
         } else {
