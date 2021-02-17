@@ -1,11 +1,11 @@
 {
   "1": {
-    "Monday" : {"start": "D10", "stop": "Q10"},
-    "Tuesday" : {"start": "D26", "stop": "Q26"},
-    "Wednesday" : {"start": "D42", "stop": "Q42"},
-    "Thursday" : {"start": "D58", "stop": "Q58"},
-    "Friday" : {"start": "D74", "stop": "Q74"},
-    "Saturday" : {"start": "D90", "stop": "Q90"},
-    "Sunday" : {"start": "D106", "stop": "Q106"}
+    "Monday" : {"start": "D10", "end": "Q10"},
+    "Tuesday" : {"start": "D26", "end": "Q26"},
+    "Wednesday" : {"start": "D42", "end": "Q42"},
+    "Thursday" : {"start": "D58", "end": "Q58"},
+    "Friday" : {"start": "D74", "end": "Q74"},
+    "Saturday" : {"start": "D90", "end": "Q90"},
+    "Sunday" : {"start": "D106", "end": "Q106"}
   }
 }

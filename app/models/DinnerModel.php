@@ -25,9 +25,10 @@ class DinnerModel extends MenuModel
         $str = file_get_contents($path);
         $coordinates = json_decode($str, true);
 
-        return ["soup" => $coordinates[$pult][$this->TODAY]["soup"],
-            "main" => $coordinates[$pult][$this->TODAY]["main"],
-            "price" => $coordinates[$pult][$this->TODAY]["price"]];
+        return [
+            "start" => $coordinates[$pult][$this->TODAY]["start"],
+            "end" => $coordinates[$pult][$this->TODAY]["end"],
+        ];
     }
 
 
