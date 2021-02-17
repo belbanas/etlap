@@ -14,7 +14,6 @@ class Food implements JsonSerializable
     private string $day;
     private string $language;
     private int $pult;
-    private ?string $soupPicture;
     private ?string $mainCoursePicture;
 
     /**
@@ -39,7 +38,6 @@ class Food implements JsonSerializable
         $this->language = $language;
         $this->pult = $pult;
         $this->mainCoursePicture = "";
-        $this->soupPicture = "";
     }
 
     /**
@@ -118,22 +116,6 @@ class Food implements JsonSerializable
     /**
      * @return string|null
      */
-    public function getSoupPicture(): ?string
-    {
-        return $this->soupPicture;
-    }
-
-    /**
-     * @param string|null $soupPicture
-     */
-    public function setSoupPicture(?string $soupPicture): void
-    {
-        $this->soupPicture = $soupPicture;
-    }
-
-    /**
-     * @return string|null
-     */
     public function getMainCoursePicture(): ?string
     {
         return $this->mainCoursePicture;
@@ -178,7 +160,6 @@ class Food implements JsonSerializable
             "language" => $this->language,
             "pult" => $this->pult,
             "mainPic" => $this->mainCoursePicture,
-            "soupPic" => $this->soupPicture
         ];
     }
 }
