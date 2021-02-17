@@ -1,29 +1,29 @@
 {
   "1": {
-    "Monday" : {"soup": "B8", "main": "B8", "second": "B8", "price": "D5"},
-    "Tuesday" : {"soup": "B8", "main": "B8", "second": "B8", "price": "D5"},
-    "Wednesday" : {"soup": "B8", "main": "B8", "second": "B8", "price": "D5"},
-    "Thursday" : {"soup": "B8", "main": "B8", "second": "B8", "price": "D5"},
-    "Friday" : {"soup": "B8", "main": "B8", "second": "B8", "price": "D5"},
-    "Saturday" : {"soup": "B8", "main": "B8", "second": "B8", "price": "D5"},
-    "Sunday" : {"soup": "B8", "main": "B8", "second": "B8", "price": "D5"}
+    "Monday" : {"soup": "C3", "main": "C4", "second": "C5", "price": "D6", "picture":  "E3"},
+    "Tuesday" : {"soup": "C3", "main": "C4", "second": "C5", "price": "D6", "picture":  "E3"},
+    "Wednesday" : {"soup": "C3", "main": "C4", "second": "C5", "price": "D6", "picture":  "E3"},
+    "Thursday" : {"soup": "C3", "main": "C4", "second": "C5", "price": "D6", "picture":  "E3"},
+    "Friday" : {"soup": "C3", "main": "C4", "second": "C5", "price": "D6", "picture":  "E3"},
+    "Saturday" : {"soup": "C3", "main": "C4", "second": "C5", "price": "D6", "picture":  "E3"},
+    "Sunday" : {"soup": "C3", "main": "C4", "second": "C5", "price": "D6", "picture":  "E3"}
   },
   "2": {
-    "Monday" : {"soup": "B8", "main": "B8", "second": "B8", "price": "D5"},
-    "Tuesday" : {"soup": "B8", "main": "B8", "second": "B8", "price": "D5"},
-    "Wednesday" : {"soup": "B8", "main": "B8", "second": "B8", "price": "D5"},
-    "Thursday" : {"soup": "B8", "main": "B8", "second": "B8", "price": "D5"},
-    "Friday" : {"soup": "B8", "main": "B8", "second": "B8", "price": "D5"},
-    "Saturday" : {"soup": "B8", "main": "B8", "second": "B8", "price": "D5"},
-    "Sunday" : {"soup": "B8", "main": "B8", "second": "B8", "price": "D5"}
+    "Monday" : {"soup": "C3", "main": "C4", "second": "C5", "price": "D6", "picture":  "E3"},
+    "Tuesday" : {"soup": "C3", "main": "C4", "second": "C5", "price": "D6", "picture":  "E3"},
+    "Wednesday" : {"soup": "C3", "main": "C4", "second": "C5", "price": "D6", "picture":  "E3"},
+    "Thursday" : {"soup": "C3", "main": "C4", "second": "C5", "price": "D6", "picture":  "E3"},
+    "Friday" : {"soup": "C3", "main": "C4", "second": "C5", "price": "D6", "picture":  "E3"},
+    "Saturday" : {"soup": "C3", "main": "C4", "second": "C5", "price": "D6", "picture":  "E3"},
+    "Sunday" : {"soup": "C3", "main": "C4", "second": "C5", "price": "D6", "picture":  "E3"}
   },
   "3": {
-    "Monday" : {"soup": "B8", "main": "B8", "second": "B8", "price": "D5"},
-    "Tuesday" : {"soup": "B8", "main": "B8", "second": "B8", "price": "D5"},
-    "Wednesday" : {"soup": "B8", "main": "B8", "second": "B8", "price": "D5"},
-    "Thursday" : {"soup": "B8", "main": "B8", "second": "B8", "price": "D5"},
-    "Friday" : {"soup": "B8", "main": "B8", "second": "B8", "price": "D5"},
-    "Saturday" : {"soup": "B8", "main": "B8", "second": "B8", "price": "D5"},
-    "Sunday" : {"soup": "B8", "main": "B8", "second": "B8", "price": "D5"}
+    "Monday" : {"soup": "C3", "main": "C4", "second": "C5", "price": "D6", "picture":  "E3"},
+    "Tuesday" : {"soup": "C3", "main": "C4", "second": "C5", "price": "D6", "picture":  "E3"},
+    "Wednesday" : {"soup": "C3", "main": "C4", "second": "C5", "price": "D6", "picture":  "E3"},
+    "Thursday" : {"soup": "C3", "main": "C4", "second": "C5", "price": "D6", "picture":  "E3"},
+    "Friday" : {"soup": "C3", "main": "C4", "second": "C5", "price": "D6", "picture":  "E3"},
+    "Saturday" : {"soup": "C3", "main": "C4", "second": "C5", "price": "D6", "picture":  "E3"},
+    "Sunday" : {"soup": "C3", "main": "C4", "second": "C5", "price": "D6", "picture":  "E3"}
   }
 }
