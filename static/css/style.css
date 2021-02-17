@@ -31,7 +31,7 @@ body {
 .pictures {
     /*background: aqua;*/
     height: 100%;
-    width: 60%;
+    width: 1080px;
 }
 
 p {
@@ -82,7 +82,7 @@ p {
 #pult-name {
     text-align: center;
     font-weight: bold;
-    font-size: 4rem;
+    font-size: 5rem;
     padding: 1rem;
     margin-top: 4rem;
 }
@@ -104,9 +104,14 @@ button {
     font-size: 1.5rem;
 }
 
-#main-pic, .flag {
+.flag {
     height: 100%;
     width: 100%;
+}
+
+#main-pic {
+    height: 740px;
+    width: 1080px;
 }
 
 .line {
@@ -114,6 +119,14 @@ button {
     height: 0.5%;
     width: 60%;
     margin-left: 20%;
+}
+
+.line2 {
+    background-color: #464646;
+    height: 0.5%;
+    width: 40%;
+    margin-left: 30%;
+    margin-top: -0.3rem;
 }
 
 .foods {
@@ -125,5 +138,16 @@ button {
     /*border: 1px solid #fff;*/
     padding: 3rem 1rem 0 1rem;
     color: #434343;
+}
+
+#food-price {
+    text-align: center;
+    font-weight: bold;
+    font-size: 2.5rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    color: #434343;
+    padding: 2rem;
 }
 

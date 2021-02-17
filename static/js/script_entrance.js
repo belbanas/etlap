@@ -11,6 +11,10 @@ const DOM = {
         foodEN: "",
         foodUA: "",
         foodKR: "",
+        food2HU: "",
+        food2EN: "",
+        food2UA: "",
+        food2KR: "",
     },
     closeList: {
         closedHU: "ZÁRVA",
@@ -29,6 +33,7 @@ const DOM = {
         mainContent: document.querySelector('.main-content'),
         soupContainer: document.querySelector('#soup-name'),
         foodContainer: document.querySelector('#food-name'),
+        food2Container: document.querySelector('#food-name2'),
         priceContainer: document.querySelector('#food-price'),
         pultNameContainer: document.querySelector('#pult-name'),
         flagContainer: document.querySelector('#flag'),
@@ -38,6 +43,7 @@ const DOM = {
         soupPicContainer: document.querySelector('#soup-pic'),
         mainPicContainer: document.querySelector('#main-pic'),
         defaultLanguageFoodContainer: document.querySelector('#default-language-food'),
+        defaultLanguageFood2Container: document.querySelector('#default-language-food2'),
         defaultLanguageSoupContainer: document.querySelector('#default-language-soup'),
         closeSignContainer: document.querySelector('#close-sign'),
     },
@@ -90,21 +96,25 @@ const DOM = {
                         if (id === "1") {
                             DOM.containers.soupContainer.innerHTML = DOM.foodList.soupHU
                             DOM.containers.foodContainer.innerHTML = DOM.foodList.foodHU
+                            DOM.containers.food2Container.innerHTML = DOM.foodList.food2HU
                             DOM.containers.flagContainer.innerHTML = DOM.flagList.HU
                         } else {
                             DOM.containers.soupContainer.innerHTML = DOM.foodList.soupKR
                             DOM.containers.foodContainer.innerHTML = DOM.foodList.foodKR
+                            DOM.containers.food2Container.innerHTML = DOM.foodList.food2KR
                             DOM.containers.flagContainer.innerHTML = DOM.flagList.KR
                         }
                         break;
                     case (sec >= 5 && sec < 10) || (sec >= 20 && sec < 25) || (sec >= 35 && sec < 40) || (sec >= 50 && sec < 55):
                         DOM.containers.soupContainer.innerHTML = DOM.foodList.soupEN
                         DOM.containers.foodContainer.innerHTML = DOM.foodList.foodEN
+                        DOM.containers.food2Container.innerHTML = DOM.foodList.food2EN
                         DOM.containers.flagContainer.innerHTML = DOM.flagList.EN
                         break;
                     case (sec >= 10 && sec < 15) || (sec >= 25 && sec < 30) || (sec >= 40 && sec < 45) || sec >= 55:
                         DOM.containers.soupContainer.innerHTML = DOM.foodList.soupUA
                         DOM.containers.foodContainer.innerHTML = DOM.foodList.foodUA
+                        DOM.containers.food2Container.innerHTML = DOM.foodList.food2UA
                         DOM.containers.flagContainer.innerHTML = DOM.flagList.UA
                         break;
                 }
@@ -135,13 +145,19 @@ const DOM = {
                     DOM.foodList.soupEN = json_response.EN.soup;
                     DOM.foodList.soupUA = json_response.UA.soup;
                     DOM.foodList.soupKR = json_response.KR.soup;
+                    DOM.foodList.food2HU = json_response.HU["second"];
+                    DOM.foodList.food2EN = json_response.EN["second"];
+                    DOM.foodList.food2UA = json_response.UA["second"];
+                    DOM.foodList.food2KR = json_response.KR["second"];
                     DOM.containers.priceContainer.innerHTML = json_response.HU.price + " HUF";
                     if (id === "1") {
                         DOM.containers.defaultLanguageSoupContainer.innerHTML = DOM.foodList.soupKR;
                         DOM.containers.defaultLanguageFoodContainer.innerHTML = DOM.foodList.foodKR;
+                        DOM.containers.defaultLanguageFood2Container.innerHTML = DOM.foodList.food2KR;
                     } else {
                         DOM.containers.defaultLanguageSoupContainer.innerHTML = DOM.foodList.soupHU;
                         DOM.containers.defaultLanguageFoodContainer.innerHTML = DOM.foodList.foodHU;
+                        DOM.containers.defaultLanguageFood2Container.innerHTML = DOM.foodList.food2HU;
                     }
                     // DOM.containers.soupPicContainer.src = "kepek/" + json_response.HU.soupPic;
                     DOM.containers.mainPicContainer.src = "kepek/" + json_response.HU.mainPic;
