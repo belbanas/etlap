@@ -30,8 +30,9 @@ class MenuModel
         $this->language = $language;
         $this->TODAY = date('l');
         $this->WEEK = date('W');
-        $this->reader = IOFactory::createReader("Xlsx");
         $this->filename = './etlapok/' . $this->WEEK . '_Het_HU.xls';
+        $inputFileType = IOFactory::identify($this->filename);
+        $this->reader = IOFactory::createReader($inputFileType);
 
         $currentTime = date('H:i:s');
         $yesterday = date("l", strtotime("yesterday"));
