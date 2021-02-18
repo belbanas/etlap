@@ -59,63 +59,79 @@ const DOM = {
                         location.reload();
                         break;
                     case sec >= 1 && sec < 15:
-                        DOM.containers.mainContent.innerHTML = ""
-                        DOM.containers.closeFlagContainer.innerHTML = DOM.flagList.HU
-                        DOM.containers.closeSignContainer.innerHTML = DOM.closeList.closedHU
+                        if (DOM.containers.closeFlagContainer.innerHTML != `<div class="anim">${DOM.flagList.HU}</div>`) {
+                            DOM.containers.mainContent.innerHTML = ""
+                            DOM.containers.closeFlagContainer.innerHTML = `<div class="anim">${DOM.flagList.HU}</div>`
+                            DOM.containers.closeSignContainer.innerHTML = `<div class="anim">${DOM.closeList.closedHU}</div>`
+                        }
                         break;
                     case sec >= 15 && sec < 30:
-                        DOM.containers.mainContent.innerHTML = ""
-                        DOM.containers.closeFlagContainer.innerHTML = DOM.flagList.EN
-                        DOM.containers.closeSignContainer.innerHTML = DOM.closeList.closedEN
+                        if (DOM.containers.closeFlagContainer.innerHTML != `<div class="anim">${DOM.flagList.EN}</div>`) {
+                            DOM.containers.mainContent.innerHTML = ""
+                            DOM.containers.closeFlagContainer.innerHTML = `<div class="anim">${DOM.flagList.EN}</div>`
+                            DOM.containers.closeSignContainer.innerHTML = `<div class="anim">${DOM.closeList.closedEN}</div>`
+                        }
                         break;
                     case sec >= 30 && sec < 45:
-                        DOM.containers.mainContent.innerHTML = ""
-                        DOM.containers.closeFlagContainer.innerHTML = DOM.flagList.UA
-                        DOM.containers.closeSignContainer.innerHTML = DOM.closeList.closedUA
+                        if (DOM.containers.closeFlagContainer.innerHTML != `<div class="anim">${DOM.flagList.UA}</div>`) {
+                            DOM.containers.mainContent.innerHTML = ""
+                            DOM.containers.closeFlagContainer.innerHTML = `<div class="anim">${DOM.flagList.UA}</div>`
+                            DOM.containers.closeSignContainer.innerHTML = `<div class="anim">${DOM.closeList.closedUA}</div>`
+                        }
                         break;
                     case sec >= 45:
-                        DOM.containers.mainContent.innerHTML = ""
-                        DOM.containers.closeFlagContainer.innerHTML = DOM.flagList.KR
-                        DOM.containers.closeSignContainer.innerHTML = DOM.closeList.closedKR
+                        if (DOM.containers.closeFlagContainer.innerHTML != `<div class="anim">${DOM.flagList.KR}</div>`) {
+                            DOM.containers.mainContent.innerHTML = ""
+                            DOM.containers.closeFlagContainer.innerHTML = `<div class="anim">${DOM.flagList.KR}</div>`
+                            DOM.containers.closeSignContainer.innerHTML = `<div class="anim">${DOM.closeList.closedKR}</div>`
+                        }
                         break;
                 }
             }, 100)
         } else {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const id = urlParams.get('id');
             setInterval(() => {
                 let now = new Date();
                 let sec = now.getSeconds()
                 console.log(sec)
-                const queryString = window.location.search;
-                const urlParams = new URLSearchParams(queryString);
-                const id = urlParams.get('id');
                 switch (true) {
                     case sec === 0:
                         location.reload();
                         break;
                     case (sec >= 0.5 && sec < 5) || (sec >= 15 && sec < 20) || (sec >= 30 && sec < 35) || (sec >= 45 && sec < 50):
                         if (id === "4") {
-                            DOM.containers.soupContainer.innerHTML = DOM.foodList.soupHU
-                            DOM.containers.foodContainer.innerHTML = DOM.foodList.foodHU
-                            DOM.containers.food2Container.innerHTML = DOM.foodList.food2HU
-                            DOM.containers.flagContainer.innerHTML = DOM.flagList.HU
+                            if (DOM.containers.soupContainer.innerHTML != `<div class="anim">${DOM.foodList.soupHU}</div>`) {
+                                DOM.containers.soupContainer.innerHTML = `<div class="anim">${DOM.foodList.soupHU}</div>`
+                                DOM.containers.foodContainer.innerHTML = `<div class="anim">${DOM.foodList.foodHU}</div>`
+                                DOM.containers.food2Container.innerHTML = `<div class="anim">${DOM.foodList.food2HU}</div>`
+                                DOM.containers.flagContainer.innerHTML = `<div class="anim">${DOM.flagList.HU}</div>`
+                            }
                         } else {
-                            DOM.containers.soupContainer.innerHTML = DOM.foodList.soupKR
-                            DOM.containers.foodContainer.innerHTML = DOM.foodList.foodKR
-                            DOM.containers.food2Container.innerHTML = DOM.foodList.food2KR
-                            DOM.containers.flagContainer.innerHTML = DOM.flagList.KR
+                            if (DOM.containers.soupContainer.innerHTML != `<div class="anim">${DOM.foodList.soupKR}</div>`) {
+                                DOM.containers.soupContainer.innerHTML = `<div class="anim">${DOM.foodList.soupKR}</div>`
+                                DOM.containers.foodContainer.innerHTML = `<div class="anim">${DOM.foodList.foodKR}</div>`
+                                DOM.containers.food2Container.innerHTML = `<div class="anim">${DOM.foodList.food2KR}</div>`
+                                DOM.containers.flagContainer.innerHTML = `<div class="anim">${DOM.flagList.KR}</div>`
+                            }
                         }
                         break;
                     case (sec >= 5 && sec < 10) || (sec >= 20 && sec < 25) || (sec >= 35 && sec < 40) || (sec >= 50 && sec < 55):
-                        DOM.containers.soupContainer.innerHTML = DOM.foodList.soupEN
-                        DOM.containers.foodContainer.innerHTML = DOM.foodList.foodEN
-                        DOM.containers.food2Container.innerHTML = DOM.foodList.food2EN
-                        DOM.containers.flagContainer.innerHTML = DOM.flagList.EN
+                        if (DOM.containers.soupContainer.innerHTML != `<div class="anim">${DOM.foodList.soupEN}</div>`) {
+                            DOM.containers.soupContainer.innerHTML = `<div class="anim">${DOM.foodList.soupEN}</div>`
+                            DOM.containers.foodContainer.innerHTML = `<div class="anim">${DOM.foodList.foodEN}</div>`
+                            DOM.containers.food2Container.innerHTML = `<div class="anim">${DOM.foodList.food2EN}</div>`
+                            DOM.containers.flagContainer.innerHTML = `<div class="anim">${DOM.flagList.EN}</div>`
+                        }
                         break;
                     case (sec >= 10 && sec < 15) || (sec >= 25 && sec < 30) || (sec >= 40 && sec < 45) || sec >= 55:
-                        DOM.containers.soupContainer.innerHTML = DOM.foodList.soupUA
-                        DOM.containers.foodContainer.innerHTML = DOM.foodList.foodUA
-                        DOM.containers.food2Container.innerHTML = DOM.foodList.food2UA
-                        DOM.containers.flagContainer.innerHTML = DOM.flagList.UA
+                        if (DOM.containers.soupContainer.innerHTML != `<div class="anim">${DOM.foodList.soupUA}</div>`) {
+                            DOM.containers.soupContainer.innerHTML = `<div class="anim">${DOM.foodList.soupUA}</div>`
+                            DOM.containers.foodContainer.innerHTML = `<div class="anim">${DOM.foodList.foodUA}</div>`
+                            DOM.containers.food2Container.innerHTML = `<div class="anim">${DOM.foodList.food2UA}</div>`
+                            DOM.containers.flagContainer.innerHTML = `<div class="anim">${DOM.flagList.UA}</div>`
+                        }
                         break;
                 }
             }, 100)

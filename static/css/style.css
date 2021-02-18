@@ -140,6 +140,11 @@ button {
     color: #434343;
 }
 
+.anim {
+    animation-duration: 0.5s;
+    animation-name: fade;
+}
+
 #food-price {
     text-align: center;
     font-weight: bold;
@@ -149,5 +154,10 @@ button {
     justify-content: space-evenly;
     color: #434343;
     padding: 1rem;
+}
+
+@keyframes fade {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 }
 
