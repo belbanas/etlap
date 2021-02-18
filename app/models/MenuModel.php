@@ -102,11 +102,13 @@ class MenuModel
         $price = $foodArray[3];
         $picture = $foodArray[4];
 
-        if ($soup == null || $soup === 0) {
+        if ($soup == null || $soup === 0 || $soup === '#N/A') {
             $soup = "";
-        } else if ($main === null || $main === 0) {
+        }
+        if ($main === null || $main === 0 || $main === '#N/A') {
             $main = "";
-        } else if ($second === null || $second === 0) {
+        }
+        if ($second === null || $second === 0 || $second === '#N/A') {
             $second = "";
         }
 
