@@ -175,9 +175,7 @@ const DOM = {
                         DOM.containers.defaultLanguageFoodContainer.innerHTML = DOM.foodList.foodHU;
                         DOM.containers.defaultLanguageFood2Container.innerHTML = DOM.foodList.food2HU;
                     }
-                    // DOM.containers.soupPicContainer.src = "kepek/" + json_response.HU.soupPic;
                     DOM.containers.mainPicContainer.src = "kepek/" + json_response.HU.mainPic;
-                    // DOM.containers.mainPicContainer.src = "kepek/tarhonyaleves.jpg";
                     console.log(DOM.foodList.soupHU);
                 }
                 DOM.slideshow(json_response);
