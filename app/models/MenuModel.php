@@ -30,15 +30,18 @@ class MenuModel
         $this->language = $language;
         $this->TODAY = date('l');
         $this->WEEK = date('W');
-        $this->filename = './etlapok/' . $this->WEEK . '_Het_HU.xls';
-        $inputFileType = IOFactory::identify($this->filename);
-        $this->reader = IOFactory::createReader($inputFileType);
 
         $currentTime = date('H:i:s');
         $yesterday = date("l", strtotime("yesterday"));
+        $prevWeek = date("W", strtotime("yesterday"));
         if ($currentTime < "01:30:00") {
             $this->TODAY = $yesterday;
+            $this->WEEK = $prevWeek;
         }
+
+        $this->filename = './etlapok/' . $this->WEEK . '_Het_HU.xls';
+        $inputFileType = IOFactory::identify($this->filename);
+        $this->reader = IOFactory::createReader($inputFileType);
     }
 
     /**
