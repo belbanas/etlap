@@ -5,12 +5,13 @@
 }
 
 body {
-    font-family: "Arial", "Segoe UI", "Roboto",
+    font-family: "Arial Black", "Segoe UI", "Roboto",
     "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    height: 100vh;
+    /*-webkit-font-smoothing: antialiased;*/
+    /*-moz-osx-font-smoothing: grayscale;*/
+    height: 1080px;
+    width: 1920px;
     overflow: hidden;
 }
 
@@ -110,7 +111,7 @@ button {
 }
 
 #main-pic {
-    height: 740px;
+    height: 720px;
     width: 1080px;
 }
 
