@@ -29,7 +29,8 @@ class Pult
     public function getSlide(): array
     {
         $currentDay = date('N');
-        $currentTime = date('H:i:s');
+//        $currentTime = date('H:i:s');
+        $currentTime = "07:00:00";
         $breakfastEnd = $this->intervals['breakfast']['end'];
         if ($currentDay === "6" || $currentDay === "7") {
             $breakfastEnd = $this->intervals['breakfast']['weekend'];
