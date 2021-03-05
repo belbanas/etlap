@@ -74,6 +74,15 @@ class Food implements JsonSerializable
     }
 
     /**
+     * @param string $type
+     */
+    public function setType(string $type): void
+    {
+        $this->type = $type;
+    }
+
+
+    /**
      * @return string
      */
     public function getDay(): string
