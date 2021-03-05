@@ -2,6 +2,7 @@ const DOM = {
     init: () => {
         DOM.fetchData();
     },
+    type: "",
     foodList: {
         soupHU: "",
         soupEN: "",
@@ -142,10 +143,10 @@ const DOM = {
         const urlParams = new URLSearchParams(queryString);
         const id = urlParams.get('id');
         if (id === "4") {
-            DOM.containers.pultNameContainer.innerHTML = "ASIAN";
+            // DOM.containers.pultNameContainer.innerHTML = "ASIAN";
             DOM.containers.mainFlagContainer.innerHTML = DOM.flagList.KR;
         } else {
-            DOM.containers.pultNameContainer.innerHTML = "EUROPEAN " + id;
+            // DOM.containers.pultNameContainer.innerHTML = "EUROPEAN " + id;
             DOM.containers.mainFlagContainer.innerHTML = DOM.flagList.HU;
         }
         fetch('/json_output.php?id=' + id)
@@ -153,6 +154,8 @@ const DOM = {
             .then(json_response => {
                 console.log(json_response);
                 if (json_response.length !== 0) {
+                    DOM.type = json_response.HU.type;
+                    DOM.containers.pultNameContainer.innerHTML = DOM.type;
                     DOM.foodList.foodHU = json_response.HU.main;
                     DOM.foodList.foodEN = json_response.EN.main;
                     DOM.foodList.foodUA = json_response.UA.main;
