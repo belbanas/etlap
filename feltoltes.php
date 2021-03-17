@@ -24,7 +24,7 @@ $upload->uploadFile($_FILES, $_POST);
 <body>
 <div class="upload-container">
     <h1>Étlap feltöltése</h1>
-    <form action="/feltoltes.php" method="post" enctype="multipart/form-data">
+    <form action="feltoltes.php" method="post" enctype="multipart/form-data">
         <label for="etlap">Étlap kiválasztása:</label>
         <input type="file" name="etlap" id="etlap"><br><br>
         <!--        Ez csak akkor fog működni ha chrome-al használja          -->
