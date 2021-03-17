@@ -17,7 +17,7 @@ class Dinner2Model extends MenuModel
     {
         parent::__construct($language);
         $this->type = "Dinner2";
-        $this->coordinateFile = './dinner2_coordinates.json';
+        $this->coordinateFile = 'dinner2_coordinates.json';
     }
 
 }

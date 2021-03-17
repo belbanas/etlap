@@ -39,7 +39,7 @@ class MenuModel
             $this->WEEK = $prevWeek;
         }
 
-        $this->filename = './etlapok/' . $this->WEEK . '_Het_HU.xls';
+        $this->filename = 'etlapok/' . $this->WEEK . '_Het_HU.xls';
         $inputFileType = IOFactory::identify($this->filename);
         $this->reader = IOFactory::createReader($inputFileType);
     }
