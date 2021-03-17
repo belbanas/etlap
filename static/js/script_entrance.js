@@ -149,7 +149,7 @@ const DOM = {
             // DOM.containers.pultNameContainer.innerHTML = "EUROPEAN " + id;
             DOM.containers.mainFlagContainer.innerHTML = DOM.flagList.HU;
         }
-        fetch('/json_output.php?id=' + id)
+        fetch('json_output.php?id=' + id)
             .then(response => response.json())
             .then(json_response => {
                 console.log(json_response);
