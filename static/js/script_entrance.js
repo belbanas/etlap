@@ -24,10 +24,10 @@ const DOM = {
         closedEN: "CLOSED",
     },
     flagList: {
-        HU: `<img src="/static/images/flag_HU.png" alt="Hungarian flag" class="flag">`,
-        EN: `<img src="/static/images/flag_EN.png" alt="English flag" class="flag">`,
-        UA: `<img src="/static/images/flag_UA.png" alt="Ukrainian flag" class="flag">`,
-        KR: `<img src="/static/images/flag_KR.png" alt="Korean flag" class="flag">`,
+        HU: `<img src="static/images/flag_HU.png" alt="Hungarian flag" class="flag">`,
+        EN: `<img src="static/images/flag_EN.png" alt="English flag" class="flag">`,
+        UA: `<img src="static/images/flag_UA.png" alt="Ukrainian flag" class="flag">`,
+        KR: `<img src="static/images/flag_KR.png" alt="Korean flag" class="flag">`,
     },
     containers: {
         body: document.querySelector('body'),
