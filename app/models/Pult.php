@@ -21,7 +21,7 @@ class Pult
 
     public function setTimeIntervals(): void
     {
-        $path = './time_intervals.json';
+        $path = 'time_intervals.json';
         $str = file_get_contents($path);
         $this->intervals = json_decode($str, true);
     }
