@@ -4,7 +4,6 @@
 namespace app\models;
 
 
-
 class Pult
 {
     private ?int $id;
@@ -22,7 +21,7 @@ class Pult
 
     public function setTimeIntervals(): void
     {
-        $path = './time_intervals.json';
+        $path = 'time_intervals.json';
         $str = file_get_contents($path);
         $this->intervals = json_decode($str, true);
     }
@@ -31,6 +30,7 @@ class Pult
     {
         $currentDay = date('N');
         $currentTime = date('H:i:s');
+//        $currentTime = "07:00:00";
         $breakfastEnd = $this->intervals['breakfast']['end'];
         if ($currentDay === "6" || $currentDay === "7") {
             $breakfastEnd = $this->intervals['breakfast']['weekend'];
@@ -60,7 +60,8 @@ class Pult
                 $modelKR = new Dinner2Model("KR");
                 $modelEN = new Dinner2Model("EN");
                 break;
-            case $currentTime >= $this->intervals["snack"]["start"] || $currentTime < $this->intervals["snack"]["end"]:
+            case ($currentTime >= $this->intervals["snack"]["start"] && $currentTime < $this->intervals["snack"]["end"])
+                || ($currentTime >= $this->intervals["snack2"]["start"] && $currentTime < $this->intervals["snack2"]["end"]):
                 $modelHU = new SnackModel("HU");
                 $modelUA = new SnackModel("UA");
                 $modelKR = new SnackModel("KR");
@@ -70,9 +71,8 @@ class Pult
                 return [];
         }
 
-
         if ($modelHU != null && $modelUA != null && $modelKR != null && $modelEN != null) {
-            if ($modelHU->getFood($this->id)->getMainCourse() != null) {
+            if ($modelHU->getFood($this->id)->getSoup() != null) {
                 return [
                     "HU" => $modelHU->getFood($this->id),
                     "UA" => $modelUA->getFood($this->id),
@@ -80,7 +80,6 @@ class Pult
                     "EN" => $modelEN->getFood($this->id),
                 ];
             } else {
-                echo "ez";
                 return [];
             }
         }

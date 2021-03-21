@@ -10,21 +10,33 @@
     <title>Bejárat</title>
 </head>
 <body>
+<img id="logo" src="static/images/eurest_logo_nagy.png" alt="eurest_logo_nagy"/>
 <div class="header">
-    <img id="logo" src="static/images/eurest_logo_nagy.png" alt="eurest_logo_nagy"/>
     <p id="pult-name"></p>
-    <div id="flag"></div>
+    <div id="close-flag"></div>
+    <div id="close-sign">
+    </div>
 </div>
 <div class="main-content">
-    <div class="container">
-        <p id="default-language-soup">Leves</p>
-        <p id="default-language-food">Főétel</p>
+    <div class="pictures">
+        <img id="main-pic" src="" alt="Főétel kép">
+        <div class="line2"></div>
+        <p id="food-price"></p>
     </div>
     <div class="container">
-        <p id="soup-name">Loading...</p><img id="soup-pic" src="" alt="">
-        <hr>
-        <p id="food-name"></p><img id="main-pic" src="" alt="">
-        <p><span id="food-price"></span></p>
+        <div id="main-flag" class="flag-container"></div>
+        <div class="foods">
+            <p id="default-language-soup">Loading...</p>
+            <p id="default-language-food"></p>
+            <p id="default-language-food2"></p>
+        </div>
+        <div class="line"></div>
+        <div id="flag" class="flag-container"></div>
+        <div class="foods">
+            <p id="soup-name">Loading...</p>
+            <p id="food-name"></p>
+            <p id="food-name2"></p>
+        </div>
     </div>
 </div>
 </body>

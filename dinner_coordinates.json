@@ -1,38 +1,11 @@
 {
-  "1": {
-    "Monday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Tuesday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Wednesday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Thursday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Friday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Saturday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Sunday" : {"soup": "B4", "main": "B8", "price": "D5"}
-  },
-  "2": {
-    "Monday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Tuesday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Wednesday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Thursday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Friday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Saturday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Sunday" : {"soup": "B4", "main": "B8", "price": "D5"}
-  },
-  "3": {
-    "Monday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Tuesday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Wednesday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Thursday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Friday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Saturday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Sunday" : {"soup": "B4", "main": "B8", "price": "D5"}
-  },
   "4": {
-    "Monday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Tuesday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Wednesday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Thursday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Friday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Saturday" : {"soup": "B4", "main": "B8", "price": "D5"},
-    "Sunday" : {"soup": "B4", "main": "B8", "price": "D5"}
+    "Monday" : {"start": "D10", "end": "Q10"},
+    "Tuesday" : {"start": "D26", "end": "Q26"},
+    "Wednesday" : {"start": "D42", "end": "Q42"},
+    "Thursday" : {"start": "D58", "end": "Q58"},
+    "Friday" : {"start": "D74", "end": "Q74"},
+    "Saturday" : {"start": "D90", "end": "Q90"},
+    "Sunday" : {"start": "D106", "end": "Q106"}
   }
 }

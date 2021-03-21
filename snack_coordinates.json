@@ -1,38 +1,38 @@
 {
   "1": {
-    "Monday" : {"main": "B8", "price": "D5"},
-    "Tuesday" : {"main": "B8", "price": "D5"},
-    "Wednesday" : {"main": "B8", "price": "D5"},
-    "Thursday" : {"main": "B8", "price": "D5"},
-    "Friday" : {"main": "B8", "price": "D5"},
-    "Saturday" : {"main": "B8", "price": "D5"},
-    "Sunday" : {"main": "B8", "price": "D5"}
+    "Monday" : {"start": "D14", "end": "Q14"},
+    "Tuesday" : {"start": "D30", "end": "Q30"},
+    "Wednesday" : {"start": "D46", "end": "Q46"},
+    "Thursday" : {"start": "D62", "end": "Q62"},
+    "Friday" : {"start": "D78", "end": "Q78"},
+    "Saturday" : {"start": "D94", "end": "Q94"},
+    "Sunday" : {"start": "D110", "end": "Q110"}
   },
   "2": {
-    "Monday" : {"main": "B8", "price": "D5"},
-    "Tuesday" : {"main": "B8", "price": "D5"},
-    "Wednesday" : {"main": "B8", "price": "D5"},
-    "Thursday" : {"main": "B8", "price": "D5"},
-    "Friday" : {"main": "B8", "price": "D5"},
-    "Saturday" : {"main": "B8", "price": "D5"},
-    "Sunday" : {"main": "B8", "price": "D5"}
+    "Monday" : {"start": "D15", "end": "Q15"},
+    "Tuesday" : {"start": "D31", "end": "Q31"},
+    "Wednesday" : {"start": "D47", "end": "Q47"},
+    "Thursday" : {"start": "D63", "end": "Q63"},
+    "Friday" : {"start": "D79", "end": "Q79"},
+    "Saturday" : {"start": "D95", "end": "Q95"},
+    "Sunday" : {"start": "D111", "end": "Q111"}
   },
   "3": {
-    "Monday" : {"main": "B8", "price": "D5"},
-    "Tuesday" : {"main": "B8", "price": "D5"},
-    "Wednesday" : {"main": "B8", "price": "D5"},
-    "Thursday" : {"main": "B8", "price": "D5"},
-    "Friday" : {"main": "B8", "price": "D5"},
-    "Saturday" : {"main": "B8", "price": "D5"},
-    "Sunday" : {"main": "B8", "price": "D5"}
+    "Monday" : {"start": "D16", "end": "Q16"},
+    "Tuesday" : {"start": "D32", "end": "Q32"},
+    "Wednesday" : {"start": "D48", "end": "Q48"},
+    "Thursday" : {"start": "D64", "end": "Q64"},
+    "Friday" : {"start": "D80", "end": "Q80"},
+    "Saturday" : {"start": "D96", "end": "Q96"},
+    "Sunday" : {"start": "D112", "end": "Q112"}
   },
   "4": {
-    "Monday" : {"main": "B8", "price": "D5"},
-    "Tuesday" : {"main": "B8", "price": "D5"},
-    "Wednesday" : {"main": "B8", "price": "D5"},
-    "Thursday" : {"main": "B8", "price": "D5"},
-    "Friday" : {"main": "B8", "price": "D5"},
-    "Saturday" : {"main": "B8", "price": "D5"},
-    "Sunday" : {"main": "B8", "price": "D5"}
+    "Monday" : {"start": "D17", "end": "Q17"},
+    "Tuesday" : {"start": "D33", "end": "Q33"},
+    "Wednesday" : {"start": "D49", "end": "Q49"},
+    "Thursday" : {"start": "D65", "end": "Q65"},
+    "Friday" : {"start": "D81", "end": "Q81"},
+    "Saturday" : {"start": "D97", "end": "Q97"},
+    "Sunday" : {"start": "D113", "end": "Q113"}
   }
 }

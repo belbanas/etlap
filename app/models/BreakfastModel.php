@@ -18,16 +18,7 @@ class BreakfastModel extends MenuModel
     {
         parent::__construct($language);
         $this->type = 'Breakfast';
-    }
-
-    public function getCoordinates(int $pult): array
-    {
-        $path = './breakfast_coordinates.json';
-        $str = file_get_contents($path);
-        $coordinates = json_decode($str, true);
-
-        return ["main" => $coordinates[$pult][$this->TODAY]["main"],
-            "price" => $coordinates[$pult][$this->TODAY]["price"]];
+        $this->coordinateFile = 'breakfast_coordinates.json';
     }
 
 }

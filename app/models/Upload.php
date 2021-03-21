@@ -14,10 +14,10 @@ class Upload
         echo $week;
         $target = $this->uploadFolder.$week."_Het_HU.xls";
 //        Ez nem biztos, hogy fog kelleni:
-        if (file_exists($target)) {
-            echo '<script type="text/javascript">alert("Az adott hétre már van étlap, kérlek válassz másikat")</script>';
-        } else {
-            move_uploaded_file($files["etlap"]["tmp_name"], $target);
-        }
+//        if (file_exists($target)) {
+//            echo '<script type="text/javascript">alert("Az adott hétre már van étlap, kérlek válassz másikat")</script>';
+//        } else {
+//        }
+        move_uploaded_file($files["etlap"]["tmp_name"], $target);
     }
 }

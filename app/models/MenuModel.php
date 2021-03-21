@@ -17,6 +17,7 @@ class MenuModel
     private IReader $reader;
     protected string $type;
     protected string $language;
+    protected string $coordinateFile;
 
 
     /**
@@ -29,8 +30,18 @@ class MenuModel
         $this->language = $language;
         $this->TODAY = date('l');
         $this->WEEK = date('W');
-        $this->reader = IOFactory::createReader("Xlsx");
-        $this->filename = './etlapok/' . $this->WEEK . '_Het_HU.xls';
+
+        $currentTime = date('H:i:s');
+        $yesterday = date("l", strtotime("yesterday"));
+        $prevWeek = date("W", strtotime("yesterday"));
+        if ($currentTime < "01:30:00") {
+            $this->TODAY = $yesterday;
+            $this->WEEK = $prevWeek;
+        }
+
+        $this->filename = 'etlapok/' . $this->WEEK . '_Het_HU.xls';
+        $inputFileType = IOFactory::identify($this->filename);
+        $this->reader = IOFactory::createReader($inputFileType);
     }
 
     /**
@@ -39,112 +50,116 @@ class MenuModel
      */
     public function getCoordinates(int $pult): ?array
     {
-        return null;
+        $str = file_get_contents($this->coordinateFile);
+        $coordinates = json_decode($str, true);
+
+        return [
+            "start" => $coordinates[$pult][$this->TODAY]["start"],
+            "end" => $coordinates[$pult][$this->TODAY]["end"],
+        ];
     }
 
+    /**
+     * @param int $pult
+     * @return Food|null
+     */
     public function getFood(int $pult): ?Food
     {
         try {
             $spreadsheet = $this->reader->load($this->filename);
         } catch (InvalidArgumentException $e) {
-            echo $e->getMessage() . ' Nem található az excel fájl a következőhöz: ' . $this->type . $this->language . " ";
-            return new Food("Missing Soup", "Missign Main Course", 0, $this->type, $this->TODAY, $this->language, $pult);
+            echo $e->getMessage() . ' Nem található adat';
+            return new Food("Missing Soup", "Missing Main Course", "Missing second course", 0, $this->type, $this->TODAY, $this->language, $pult);
         }
-        $soupCoordinate = $this->getCoordinates($pult)["soup"];
-        $mainCoordinate = $this->getCoordinates($pult)["main"];
-        $priceCoordinate = $this->getCoordinates($pult)["price"];
+
         $soup = "";
         $main = "";
-        $price = 0;
+        $second = "";
+
+        $startCoordinate = $this->getCoordinates($pult)["start"];
+        $endCoordinate = $this->getCoordinates($pult)["end"];
         try {
-            $soup = $spreadsheet->getActiveSheet()->getCell($soupCoordinate)->getCalculatedValue();
-        } catch (\PhpOffice\PhpSpreadsheet\Calculation\Exception $e) {
-//            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (LEVES) ';
+            $foodArray = $spreadsheet->getSheet(2)->rangeToArray($startCoordinate . ":" . $endCoordinate, null, true, true, false)[0];
         } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
-//            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (LEVES) ';
-        }
-        try {
-            $main = $spreadsheet->getActiveSheet()->getCell($mainCoordinate)->getCalculatedValue();
-        } catch (\PhpOffice\PhpSpreadsheet\Calculation\Exception $e) {
-            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (FŐÉTEL) ';
-        } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
-            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (FŐÉTEL) ';
-        }
-        try {
-            $price = $spreadsheet->getActiveSheet()->getCell($priceCoordinate)->getCalculatedValue();
-        } catch (\PhpOffice\PhpSpreadsheet\Calculation\Exception $e) {
-            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (ÁR) ';
-        } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
-            echo $e->getMessage() . '. Hiba a beolvasott excel koordinátában! (ÁR) ';
+            $foodArray = [];
         }
 
+        if ($this->language === "HU") {
+            $soup = $foodArray[0];
+            $main = $foodArray[1];
+            $second = $foodArray[2];
+        } else if ($this->language === "EN") {
+            $soup = $foodArray[5];
+            $main = $foodArray[6];
+            $second = $foodArray[7];
+        } else if ($this->language === "UA") {
+            $soup = $foodArray[8];
+            $main = $foodArray[9];
+            $second = $foodArray[10];
+        } else if ($this->language === "KR") {
+            $soup = $foodArray[11];
+            $main = $foodArray[12];
+            $second = $foodArray[13];
+        }
 
-        if ($soup == null) {
+        $price = $foodArray[3];
+        $picture = $foodArray[4];
+
+        if ($soup == null || $soup === 0 || $soup === '#N/A') {
             $soup = "";
         }
-        if ($soupCoordinate === null || $priceCoordinate === null) {
-            $soup = null;
+        if ($main === null || $main === 0 || $main === '#N/A') {
+            $main = "";
+        }
+        if ($second === null || $second === 0 || $second === '#N/A') {
+            $second = "";
         }
 
-        $food = new Food($soup, $main, $price, $this->type, $this->TODAY, $this->language, $pult);
+        $food = new Food($soup, $main, $second, $price, $this->type, $this->TODAY, $this->language, $pult);
+        $food->setMainCoursePicture($picture);
 
-        $this->setPictureFilename($food);
-
-        if ($this->language != "HU") {
-            $this->translateFood($food);
-            return $food;
-        } else {
-            return $food;
+        try {
+            $pultNameMatrix = $spreadsheet->getSheet(2)->rangeToArray("B117:F120", null, true, true, false);
+        } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
+            $pultNameMatrix = ["1","2","3","4"];
         }
-    }
 
-    public function setPictureFilename(Food $food)
-    {
-        $soup = $food->getSoup();
-        $main = $food->getMainCourse();
-        $translateTable = "./etlapok/forditotabla.xlsx";
-        $spreadsheet = $this->reader->load($translateTable);
-        $dataArray = $spreadsheet->getSheet(0)->rangeToArray('A1:E60', null, true, true, false);
 
-        foreach ($dataArray as $key => $value) {
-            if ($value[0] === $soup) {
-                $food->setSoupPicture($value[4]);
-            }
-            if ($value[0] === $main) {
-                $food->setMainCoursePicture($value[4]);
-            }
+        $pultNameArray = [];
+
+        switch ($pult) {
+            case 1:
+                $pultNameArray = $pultNameMatrix[0];
+                break;
+            case 2:
+                $pultNameArray = $pultNameMatrix[1];
+                break;
+            case 3:
+                $pultNameArray = $pultNameMatrix[2];
+                break;
+            case 4:
+                $pultNameArray = $pultNameMatrix[3];
+                break;
         }
-    }
 
-    public function translateFood(Food $food)
-    {
-        $soup = $food->getSoup();
-        $main = $food->getMainCourse();
-        $translateTable = "./etlapok/forditotabla.xlsx";
-
-        $spreadsheet = $this->reader->load($translateTable);
-        $dataArray = $spreadsheet->getSheet(0)->rangeToArray('A1:D60', null, true, true, false);
-
-
-        foreach ($dataArray as $key => $value) {
-            if ($value[0] === $soup) {
-                if ($this->language === "EN") {
-                    $food->setSoup($value[1]);
-                } else if ($this->language === "UA") {
-                    $food->setSoup($value[2]);
-                } else if ($this->language === "KR") {
-                    $food->setSoup($value[3]);
-                }
-            }
-            if ($value[0] === $main) {
-                if ($this->language === "EN") {
-                    $food->setMainCourse($value[1]);
-                } else if ($this->language === "UA") {
-                    $food->setMainCourse($value[2]);
-                } else if ($this->language === "KR") {
-                    $food->setMainCourse($value[3]);
-                }
-            }
+        switch ($this->type) {
+            case "Breakfast":
+                $food->setType($pultNameArray[0]);
+                break;
+            case "Lunch":
+                $food->setType($pultNameArray[1]);
+                break;
+            case "Dinner":
+                $food->setType($pultNameArray[2]);
+                break;
+            case "Dinner2":
+                $food->setType($pultNameArray[3]);
+                break;
+            case "Snack":
+                $food->setType($pultNameArray[4]);
+                break;
         }
+
+        return $food;
     }
 }
