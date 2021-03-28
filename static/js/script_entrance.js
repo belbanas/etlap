@@ -61,6 +61,7 @@ var DOM = {
   slideshow: function slideshow(json) {
     if (json.length === 0) {
       console.log("zárva");
+      var lang = "";
       setInterval(function () {
         var now = new Date();
         var sec = now.getSeconds();
@@ -72,10 +73,7 @@ var DOM = {
             break;
 
           case sec >= 1 && sec < 15:
-            if (
-              DOM.containers.closeFlagContainer.innerHTML !=
-              '<div class="anim">'.concat(DOM.flagList.HU, "</div>")
-            ) {
+            if (lang != "HU") {
               DOM.containers.mainContent.innerHTML = "";
               DOM.containers.closeFlagContainer.innerHTML = '<div class="anim">'.concat(
                 DOM.flagList.HU,
@@ -85,15 +83,13 @@ var DOM = {
                 DOM.closeList.closedHU,
                 "</div>"
               );
+              lang = "HU";
             }
 
             break;
 
           case sec >= 15 && sec < 30:
-            if (
-              DOM.containers.closeFlagContainer.innerHTML !=
-              '<div class="anim">'.concat(DOM.flagList.EN, "</div>")
-            ) {
+            if (lang != "EN") {
               DOM.containers.mainContent.innerHTML = "";
               DOM.containers.closeFlagContainer.innerHTML = '<div class="anim">'.concat(
                 DOM.flagList.EN,
@@ -103,15 +99,13 @@ var DOM = {
                 DOM.closeList.closedEN,
                 "</div>"
               );
+              lang = "EN";
             }
 
             break;
 
           case sec >= 30 && sec < 45:
-            if (
-              DOM.containers.closeFlagContainer.innerHTML !=
-              '<div class="anim">'.concat(DOM.flagList.UA, "</div>")
-            ) {
+            if (lang != "UA") {
               DOM.containers.mainContent.innerHTML = "";
               DOM.containers.closeFlagContainer.innerHTML = '<div class="anim">'.concat(
                 DOM.flagList.UA,
@@ -121,15 +115,13 @@ var DOM = {
                 DOM.closeList.closedUA,
                 "</div>"
               );
+              lang = "UA";
             }
 
             break;
 
           case sec >= 45:
-            if (
-              DOM.containers.closeFlagContainer.innerHTML !=
-              '<div class="anim">'.concat(DOM.flagList.KR, "</div>")
-            ) {
+            if (lang != "KR") {
               DOM.containers.mainContent.innerHTML = "";
               DOM.containers.closeFlagContainer.innerHTML = '<div class="anim">'.concat(
                 DOM.flagList.KR,
@@ -139,6 +131,7 @@ var DOM = {
                 DOM.closeList.closedKR,
                 "</div>"
               );
+              lang = "KR";
             }
 
             break;
@@ -270,23 +263,6 @@ var DOM = {
     }
   },
   fetchData: function fetchData() {
-    (function (w) {
-
-      w.URLSearchParams = w.URLSearchParams || function (searchString) {
-          var self = this;
-          self.searchString = searchString;
-          self.get = function (name) {
-              var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(self.searchString);
-              if (results == null) {
-                  return null;
-              }
-              else {
-                  return decodeURI(results[1]) || 0;
-              }
-          };
-      }
-  
-  })(window)
     var queryString = window.location.search;
     var urlParams = new URLSearchParams(queryString);
     var id = urlParams.get("id");
@@ -348,4 +324,24 @@ var DOM = {
       });
   }
 };
+
+(function (w) {
+
+  w.URLSearchParams = w.URLSearchParams || function (searchString) {
+      var self = this;
+      self.searchString = searchString;
+      self.get = function (name) {
+          var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(self.searchString);
+          if (results == null) {
+              return null;
+          }
+          else {
+              return decodeURI(results[1]) || 0;
+          }
+      };
+  }
+
+})(window)
+
+
 DOM.init();
