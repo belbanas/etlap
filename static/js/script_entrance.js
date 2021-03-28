@@ -62,14 +62,16 @@ var DOM = {
     if (json.length === 0) {
       console.log("zárva");
       var lang = "";
-      setInterval(function () {
+      var timer = setInterval(function () {
         var now = new Date();
         var sec = now.getSeconds();
         console.log(sec);
 
         switch (true) {
           case sec === 0:
-            location.reload();
+            //location.reload();
+            clearInterval(timer);
+            DOM.init();
             break;
 
           case sec >= 1 && sec < 15:
@@ -141,14 +143,17 @@ var DOM = {
       var queryString = window.location.search;
       var urlParams = new URLSearchParams(queryString);
       var id = urlParams.get("id");
-      setInterval(function () {
+      var lang = "";
+      var timer = setInterval(function () {
         var now = new Date();
         var sec = now.getSeconds();
         console.log(sec);
 
         switch (true) {
           case sec === 0:
-            location.reload();
+            //location.reload();
+            clearInterval(timer);
+            DOM.init();
             break;
 
           case (sec >= 0.5 && sec < 5) ||
@@ -156,10 +161,7 @@ var DOM = {
             (sec >= 30 && sec < 35) ||
             (sec >= 45 && sec < 50):
             if (id === "4") {
-              if (
-                DOM.containers.soupContainer.innerHTML !=
-                '<div class="anim">'.concat(DOM.foodList.soupHU, "</div>")
-              ) {
+              if (lang != "HU") {
                 DOM.containers.soupContainer.innerHTML = '<div class="anim">'.concat(
                   DOM.foodList.soupHU,
                   "</div>"
@@ -176,12 +178,10 @@ var DOM = {
                   DOM.flagList.HU,
                   "</div>"
                 );
+                lang = "HU";
               }
             } else {
-              if (
-                DOM.containers.soupContainer.innerHTML !=
-                '<div class="anim">'.concat(DOM.foodList.soupKR, "</div>")
-              ) {
+              if (lang != "KR") {
                 DOM.containers.soupContainer.innerHTML = '<div class="anim">'.concat(
                   DOM.foodList.soupKR,
                   "</div>"
@@ -198,6 +198,7 @@ var DOM = {
                   DOM.flagList.KR,
                   "</div>"
                 );
+                lang = "KR";
               }
             }
 
@@ -207,10 +208,7 @@ var DOM = {
             (sec >= 20 && sec < 25) ||
             (sec >= 35 && sec < 40) ||
             (sec >= 50 && sec < 55):
-            if (
-              DOM.containers.soupContainer.innerHTML !=
-              '<div class="anim">'.concat(DOM.foodList.soupEN, "</div>")
-            ) {
+            if (lang != "EN") {
               DOM.containers.soupContainer.innerHTML = '<div class="anim">'.concat(
                 DOM.foodList.soupEN,
                 "</div>"
@@ -227,6 +225,7 @@ var DOM = {
                 DOM.flagList.EN,
                 "</div>"
               );
+              lang = "EN";
             }
 
             break;
@@ -235,10 +234,7 @@ var DOM = {
             (sec >= 25 && sec < 30) ||
             (sec >= 40 && sec < 45) ||
             sec >= 55:
-            if (
-              DOM.containers.soupContainer.innerHTML !=
-              '<div class="anim">'.concat(DOM.foodList.soupUA, "</div>")
-            ) {
+            if (lang != "UA") {
               DOM.containers.soupContainer.innerHTML = '<div class="anim">'.concat(
                 DOM.foodList.soupUA,
                 "</div>"
@@ -255,6 +251,7 @@ var DOM = {
                 DOM.flagList.UA,
                 "</div>"
               );
+              lang = "UA"
             }
 
             break;
