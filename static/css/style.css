@@ -132,13 +132,14 @@ button {
 
 .foods {
     /*padding: 7rem 0 3rem 0;*/
-    display: flex;
+    /*display: flex;
     flex-flow: column;
-    justify-content: space-evenly;
+    justify-content: space-evenly;*/
     height: 49%;
     /*border: 1px solid #fff;*/
-    padding: 3rem 1rem 0 1rem;
+    padding: 3rem 1rem 0 0rem;
     color: #434343;
+    margin-top: 1.5rem;
 }
 
 .anim {
