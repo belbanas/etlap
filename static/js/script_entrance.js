@@ -22,7 +22,7 @@ var DOM = {
   closeList: {
     closedHU: "ZÁRVA",
     closedUA: "ЗАЧИНЕНО",
-    closedKR: "닫은",
+    closedKR: "닫힘",
     closedEN: "CLOSED"
   },
   flagList: {
