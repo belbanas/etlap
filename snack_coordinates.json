@@ -1,13 +1,4 @@
 {
-  "1": {
-    "Monday" : {"start": "D14", "end": "Q14"},
-    "Tuesday" : {"start": "D30", "end": "Q30"},
-    "Wednesday" : {"start": "D46", "end": "Q46"},
-    "Thursday" : {"start": "D62", "end": "Q62"},
-    "Friday" : {"start": "D78", "end": "Q78"},
-    "Saturday" : {"start": "D94", "end": "Q94"},
-    "Sunday" : {"start": "D110", "end": "Q110"}
-  },
   "2": {
     "Monday" : {"start": "D15", "end": "Q15"},
     "Tuesday" : {"start": "D31", "end": "Q31"},
@@ -25,14 +16,5 @@
     "Friday" : {"start": "D80", "end": "Q80"},
     "Saturday" : {"start": "D96", "end": "Q96"},
     "Sunday" : {"start": "D112", "end": "Q112"}
-  },
-  "4": {
-    "Monday" : {"start": "D17", "end": "Q17"},
-    "Tuesday" : {"start": "D33", "end": "Q33"},
-    "Wednesday" : {"start": "D49", "end": "Q49"},
-    "Thursday" : {"start": "D65", "end": "Q65"},
-    "Friday" : {"start": "D81", "end": "Q81"},
-    "Saturday" : {"start": "D97", "end": "Q97"},
-    "Sunday" : {"start": "D113", "end": "Q113"}
   }
 }
