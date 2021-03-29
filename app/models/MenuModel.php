@@ -54,8 +54,8 @@ class MenuModel
         $coordinates = json_decode($str, true);
 
         return [
-            "start" => $coordinates[$pult][$this->TODAY]["start"],
-            "end" => $coordinates[$pult][$this->TODAY]["end"],
+            "start" => isset($coordinates[$pult][$this->TODAY]["start"]) ? $coordinates[$pult][$this->TODAY]["start"] : 'D100',
+            "end" => isset($coordinates[$pult][$this->TODAY]["end"]) ? $coordinates[$pult][$this->TODAY]["end"] : 'Q100',
         ];
     }
 
