@@ -54,8 +54,8 @@ class MenuModel
         $coordinates = json_decode($str, true);
 
         return [
-            "start" => isset($coordinates[$pult][$this->TODAY]["start"]) ? $coordinates[$pult][$this->TODAY]["start"] : 'D100',
-            "end" => isset($coordinates[$pult][$this->TODAY]["end"]) ? $coordinates[$pult][$this->TODAY]["end"] : 'Q100',
+            "start" => isset($coordinates[$pult][$this->TODAY]["start"]) ? $coordinates[$pult][$this->TODAY]["start"] : 'D200',
+            "end" => isset($coordinates[$pult][$this->TODAY]["end"]) ? $coordinates[$pult][$this->TODAY]["end"] : 'Q200',
         ];
     }
 
@@ -78,8 +78,10 @@ class MenuModel
 
         $startCoordinate = $this->getCoordinates($pult)["start"];
         $endCoordinate = $this->getCoordinates($pult)["end"];
+
         try {
-            $foodArray = $spreadsheet->getSheet(2)->rangeToArray($startCoordinate . ":" . $endCoordinate, null, true, true, false)[0];
+            //$foodArray = $spreadsheet->getSheet(2)->rangeToArray($startCoordinate . ":" . $endCoordinate, null, true, true, false)[0];
+            $foodArray = $spreadsheet->getSheetByName('Display')->rangeToArray($startCoordinate . ":" . $endCoordinate, null, true, true, false)[0];
         } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
             $foodArray = [];
         }
