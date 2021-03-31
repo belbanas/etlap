@@ -69,9 +69,9 @@ var DOM = {
 
         switch (true) {
           case sec === 0:
-            //location.reload();
-            clearInterval(timer);
-            DOM.init();
+            location.reload();
+            //clearInterval(timer);
+            //DOM.init();
             break;
 
           case sec >= 1 && sec < 15:
@@ -151,9 +151,9 @@ var DOM = {
 
         switch (true) {
           case sec === 0:
-            //location.reload();
-            clearInterval(timer);
-            DOM.init();
+            location.reload();
+            //clearInterval(timer);
+            //DOM.init();
             break;
 
           case (sec >= 0.5 && sec < 5) ||
