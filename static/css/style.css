@@ -133,3 +133,7 @@ p {
     height: 720px;
     width: 1080px;
 }
+
+.hidden {
+    display: none;
+}
