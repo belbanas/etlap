@@ -64,6 +64,7 @@ var DOM = {
       //DOM.containers.mainContent.innerHTML = "";
       DOM.containers.mainContent.classList.add("hidden");
       DOM.containers.closeContainer.classList.remove("hidden");
+      DOM.containers.pultNameContainer.classList.remove("hidden");
       console.log("zárva");
       var lang = "";
       var timer = setInterval(function () {
@@ -139,15 +140,16 @@ var DOM = {
 
             break;
         }
-      }, 1000);
+      }, 100);
     } else {
       DOM.containers.closeContainer.classList.add("hidden");
       DOM.containers.mainContent.classList.remove("hidden");
+      DOM.containers.pultNameContainer.classList.remove("hidden");
       var queryString = window.location.search;
       var urlParams = new URLSearchParams(queryString);
       var id = urlParams.get("id");
       var lang = "";
-      var timer = setInterval(function () {
+      var timer2 = setInterval(function () {
         var now = new Date();
         var sec = now.getSeconds();
         console.log(sec);
@@ -155,7 +157,7 @@ var DOM = {
         switch (true) {
           case sec === 0:
             //location.reload();
-            clearInterval(timer);
+            clearInterval(timer2);
             DOM.init();
             break;
 
