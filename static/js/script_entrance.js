@@ -64,7 +64,7 @@ var DOM = {
       //DOM.containers.mainContent.innerHTML = "";
       DOM.containers.mainContent.classList.add("hidden");
       DOM.containers.closeContainer.classList.remove("hidden");
-      DOM.containers.pultNameContainer.classList.remove("hidden");
+      DOM.containers.pultNameContainer.innerHTML = "";
       console.log("zárva");
       var lang = "";
       var timer = setInterval(function () {
@@ -144,7 +144,6 @@ var DOM = {
     } else {
       DOM.containers.closeContainer.classList.add("hidden");
       DOM.containers.mainContent.classList.remove("hidden");
-      DOM.containers.pultNameContainer.classList.remove("hidden");
       var queryString = window.location.search;
       var urlParams = new URLSearchParams(queryString);
       var id = urlParams.get("id");
