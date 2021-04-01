@@ -70,7 +70,14 @@ var DOM = {
       var timer = setInterval(function () {
         var now = new Date();
         var sec = now.getSeconds();
+        var min = now.getMinutes();
+        
+        if (min == 45 && sec == 0) {
+            location.reload();
+        }
+
         console.log(sec);
+        console.log(min);
 
         switch (true) {
           case sec === 0:
@@ -151,7 +158,14 @@ var DOM = {
       var timer2 = setInterval(function () {
         var now = new Date();
         var sec = now.getSeconds();
+        var min = now.getMinutes();
+        
+        if (min == 45 && sec == 0) {
+            location.reload();
+        }
+
         console.log(sec);
+        console.log(min);
 
         switch (true) {
           case sec === 0:
