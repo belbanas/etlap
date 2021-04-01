@@ -56,10 +56,14 @@ var DOM = {
     defaultLanguageSoupContainer: document.querySelector(
       "#default-language-soup"
     ),
-    closeSignContainer: document.querySelector("#close-sign")
+    closeSignContainer: document.querySelector("#close-sign"),
+    closeContainer: document.querySelector("#close-container")
   },
   slideshow: function slideshow(json) {
     if (json.length === 0) {
+      //DOM.containers.mainContent.innerHTML = "";
+      DOM.containers.mainContent.classList.add("hidden");
+      DOM.containers.closeContainer.classList.remove("hidden");
       console.log("zárva");
       var lang = "";
       var timer = setInterval(function () {
@@ -69,14 +73,14 @@ var DOM = {
 
         switch (true) {
           case sec === 0:
-            location.reload();
-            //clearInterval(timer);
-            //DOM.init();
+            console.log('hello');
+            //location.reload();
+            clearInterval(timer);
+            DOM.init();
             break;
 
           case sec >= 1 && sec < 15:
             if (lang != "HU") {
-              DOM.containers.mainContent.innerHTML = "";
               DOM.containers.closeFlagContainer.innerHTML = '<div class="anim">'.concat(
                 DOM.flagList.HU,
                 "</div>"
@@ -92,7 +96,6 @@ var DOM = {
 
           case sec >= 15 && sec < 30:
             if (lang != "EN") {
-              DOM.containers.mainContent.innerHTML = "";
               DOM.containers.closeFlagContainer.innerHTML = '<div class="anim">'.concat(
                 DOM.flagList.EN,
                 "</div>"
@@ -108,7 +111,6 @@ var DOM = {
 
           case sec >= 30 && sec < 45:
             if (lang != "UA") {
-              DOM.containers.mainContent.innerHTML = "";
               DOM.containers.closeFlagContainer.innerHTML = '<div class="anim">'.concat(
                 DOM.flagList.UA,
                 "</div>"
@@ -124,7 +126,6 @@ var DOM = {
 
           case sec >= 45:
             if (lang != "KR") {
-              DOM.containers.mainContent.innerHTML = "";
               DOM.containers.closeFlagContainer.innerHTML = '<div class="anim">'.concat(
                 DOM.flagList.KR,
                 "</div>"
@@ -138,8 +139,10 @@ var DOM = {
 
             break;
         }
-      }, 100);
+      }, 1000);
     } else {
+      DOM.containers.closeContainer.classList.add("hidden");
+      DOM.containers.mainContent.classList.remove("hidden");
       var queryString = window.location.search;
       var urlParams = new URLSearchParams(queryString);
       var id = urlParams.get("id");
@@ -151,9 +154,9 @@ var DOM = {
 
         switch (true) {
           case sec === 0:
-            location.reload();
-            //clearInterval(timer);
-            //DOM.init();
+            //location.reload();
+            clearInterval(timer);
+            DOM.init();
             break;
 
           case (sec >= 0.5 && sec < 5) ||
