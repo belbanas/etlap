@@ -121,7 +121,8 @@ class MenuModel
         $food->setMainCoursePicture($picture);
 
         try {
-            $pultNameMatrix = $spreadsheet->getSheet(2)->rangeToArray("B117:F120", null, true, true, false);
+           // $pultNameMatrix = $spreadsheet->getSheet(2)->rangeToArray("B117:F120", null, true, true, false);
+            $pultNameMatrix = $spreadsheet->getSheet('Display')->rangeToArray("B117:F120", null, true, true, false);
         } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
             $pultNameMatrix = ["1","2","3","4"];
         }
@@ -146,19 +147,29 @@ class MenuModel
 
         switch ($this->type) {
             case "Breakfast":
-                $food->setType($pultNameArray[0]);
+                if (isset($pultNameArray[0])) {
+                    $food->setType($pultNameArray[0]);
+                }
                 break;
             case "Lunch":
-                $food->setType($pultNameArray[1]);
+                if (isset($pultNameArray[1])) {
+                    $food->setType($pultNameArray[1]);
+                }
                 break;
             case "Dinner":
-                $food->setType($pultNameArray[2]);
+                if (isset($pultNameArray[2])) {
+                    $food->setType($pultNameArray[2]);
+                }
                 break;
             case "Dinner2":
-                $food->setType($pultNameArray[3]);
+                if (isset($pultNameArray[3])) {
+                    $food->setType($pultNameArray[3]);
+                }
                 break;
             case "Snack":
-                $food->setType($pultNameArray[4]);
+                if (isset($pultNameArray[4])) {
+                    $food->setType($pultNameArray[4]);
+                }
                 break;
         }
 
