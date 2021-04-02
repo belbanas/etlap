@@ -71,8 +71,9 @@ var DOM = {
         var now = new Date();
         var sec = now.getSeconds();
         var min = now.getMinutes();
+        var ms = now.getMilliseconds();
         
-        if (min == 45 && sec == 0) {
+        if (min == 45 && sec == 0 && ms == 0) {
             location.reload();
         }
 
@@ -159,13 +160,15 @@ var DOM = {
         var now = new Date();
         var sec = now.getSeconds();
         var min = now.getMinutes();
+        var ms = now.getMilliseconds();
         
-        if (min == 45 && sec == 0) {
+        if (min == 45 && sec == 0 && ms == 0) {
             location.reload();
         }
 
         console.log(sec);
         console.log(min);
+        console.log(ms);
 
         switch (true) {
           case sec === 0:
