@@ -122,9 +122,9 @@ class MenuModel
 
         try {
            // $pultNameMatrix = $spreadsheet->getSheet(2)->rangeToArray("B117:F120", null, true, true, false);
-            $pultNameMatrix = $spreadsheet->getSheet('Display')->rangeToArray("B117:F120", null, true, true, false);
+            $pultNameMatrix = $spreadsheet->getSheetByName('Display')->rangeToArray("B117:F120", null, true, true, false);
         } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
-            $pultNameMatrix = ["1","2","3","4"];
+            $pultNameMatrix = [["1","2","3","4"],["1","2","3","4"],["1","2","3","4"],["1","2","3","4"]];
         }
 
 
