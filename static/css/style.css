@@ -4,8 +4,14 @@
     padding: 0;
 }
 
+@font-face {
+    font-family: myFirstFont;
+    src: url('ariblk.ttf');
+    font-weight: bold;
+  }
+
 body {
-    font-family: "Arial Black";
+    font-family: myFirstFont;
     height: 1080px;
     width: 1920px;
     overflow: hidden;
