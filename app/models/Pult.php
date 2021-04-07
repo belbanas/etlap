@@ -8,15 +8,15 @@ class Pult
 {
     private ?int $id;
     private ?array $intervals;
+    private ?string $time;
+    private ?string $day;
 
-    /**
-     * Pult constructor.
-     * @param int|null $id
-     */
     public function __construct(?int $id)
     {
         $this->id = $id;
         $this->setTimeIntervals();
+        $this->time = $_GET['time'] ?? date('H:i:s');
+        $this->day = $_GET['day'] ?? date('l');
     }
 
     public function setTimeIntervals(): void
@@ -28,11 +28,13 @@ class Pult
 
     public function getSlide(): array
     {
-        $currentDay = date('N');
-        $currentTime = date('H:i:s');
+//        $currentDay = date('l');
+        $currentDay = $this->day;
+//        $currentTime = date('H:i:s');
 //        $currentTime = "23:48:00";
+        $currentTime = $this->time;
         $breakfastEnd = $this->intervals['breakfast']['end'];
-        if ($currentDay === "6" || $currentDay === "7") {
+        if ($currentDay === "Saturday" || $currentDay === "Sunday") {
             $breakfastEnd = $this->intervals['breakfast']['weekend'];
         }
         switch ($currentTime) {

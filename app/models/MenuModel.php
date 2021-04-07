@@ -11,7 +11,7 @@ use PhpOffice\PhpSpreadsheet\Reader\IReader;
 
 class MenuModel
 {
-    protected string $TODAY;
+    protected ?string $TODAY;
     protected ?string $WEEK;
     protected ?string $filename;
     private IReader $reader;
@@ -23,15 +23,19 @@ class MenuModel
     /**
      * MenuModel constructor.
      * @param string $language
+     * @param string|null $time
+     * @param string|null $day
      * @throws Exception
      */
     public function __construct(string $language)
     {
         $this->language = $language;
-        $this->TODAY = date('l');
+//        $this->TODAY = date('l');
+        $this->TODAY = $_GET['day'] ?? date('l');
         $this->WEEK = date('W');
 
-        $currentTime = date('H:i:s');
+//        $currentTime = date('H:i:s');
+        $currentTime = $_GET['time'] ?? date('H:i:s');
         $yesterday = date("l", strtotime("yesterday"));
         $prevWeek = date("W", strtotime("yesterday"));
         if ($currentTime < "01:30:00") {

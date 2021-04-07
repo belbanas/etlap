@@ -281,6 +281,20 @@ var DOM = {
     var queryString = window.location.search;
     var urlParams = new URLSearchParams(queryString);
     var id = urlParams.get("id");
+    var time = urlParams.get("time");
+    var day = urlParams.get("day");
+
+    var url = "json_output.php?id=" + id;
+
+    if (time != null) {
+      url = "json_output.php?id=" + id + "&time=" + time;
+    }
+    if (day != null) {
+      url = "json_output.php?id=" + id + "&day=" + day
+    }
+    if (time != null && day != null) {
+      url = "json_output.php?id=" + id + "&time=" + time + "&day=" + day;
+    }
 
     if (id === "4") {
       // DOM.containers.pultNameContainer.innerHTML = "ASIAN";
@@ -290,7 +304,7 @@ var DOM = {
       DOM.containers.mainFlagContainer.innerHTML = DOM.flagList.HU;
     }
 
-    fetch("json_output.php?id=" + id)
+    fetch(url)
       .then(function (response) {
         return response.json();
       })
