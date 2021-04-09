@@ -1,20 +1,35 @@
 {
+  "pre-breakfast": {
+    "start": "05:00:00"
+  },
   "breakfast": {
     "start": "05:30:00",
     "end": "08:00:00",
     "weekend": "09:00:00"
   },
+  "pre-lunch": {
+    "start": "10:20:00"
+  },
   "lunch": {
     "start": "10:50:00",
     "end": "13:30:00"
+  },
+  "pre-dinner1": {
+    "start": "16:20:00"
   },
   "dinner1": {
     "start": "16:50:00",
     "end": "18:30:00"
   },
+  "pre-dinner2": {
+    "start": "19:20:00"
+  },
   "dinner2": {
     "start": "19:50:00",
     "end": "21:00:00"
+  },
+  "pre-snack": {
+    "start": "23:00:00"
   },
   "snack": {
     "start": "23:30:00",
