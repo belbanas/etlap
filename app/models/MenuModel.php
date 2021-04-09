@@ -18,6 +18,7 @@ class MenuModel
     protected string $type;
     protected string $language;
     protected string $coordinateFile;
+    protected bool $isPre;
 
 
     /**
@@ -27,8 +28,9 @@ class MenuModel
      * @param string|null $day
      * @throws Exception
      */
-    public function __construct(string $language)
+    public function __construct(string $language, bool $isPre = false)
     {
+        $this->isPre = $isPre;
         $this->language = $language;
 //        $this->TODAY = date('l');
         $this->TODAY = $_GET['day'] ?? date('l');
@@ -86,7 +88,7 @@ class MenuModel
         try {
             //$foodArray = $spreadsheet->getSheet(2)->rangeToArray($startCoordinate . ":" . $endCoordinate, null, true, true, false)[0];
             $foodArray = $spreadsheet->getSheetByName('Display')->rangeToArray($startCoordinate . ":" . $endCoordinate, null, true, true, false)[0];
-        } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
+        } catch (\Exception $e) {
             $foodArray = [];
         }
 
@@ -122,12 +124,27 @@ class MenuModel
         }
 
         $food = new Food($soup, $main, $second, $price, $this->type, $this->TODAY, $this->language, $pult);
-        $food->setMainCoursePicture($picture);
+
+        if ($this->isPre) {
+            if ($this->type === 'Breakfast') {
+                $food->setMainCoursePicture("tarhonyaleves.jpg");
+            } else if ($this->type === 'Lunch') {
+                $food->setMainCoursePicture("tarhonyaleves.jpg");
+            } else if ($this->type === 'Dinner') {
+                $food->setMainCoursePicture("tarhonyaleves.jpg");
+            } else if ($this->type === 'Dinner2') {
+                $food->setMainCoursePicture("tarhonyaleves.jpg");
+            } else if ($this->type === 'Snack') {
+                $food->setMainCoursePicture("tarhonyaleves.jpg");
+            }
+        } else {
+            $food->setMainCoursePicture($picture);
+        }
 
         try {
            // $pultNameMatrix = $spreadsheet->getSheet(2)->rangeToArray("B117:F120", null, true, true, false);
             $pultNameMatrix = $spreadsheet->getSheetByName('Display')->rangeToArray("B117:F120", null, true, true, false);
-        } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
+        } catch (\Exception $e) {
             $pultNameMatrix = [["1","2","3","4"],["1","2","3","4"],["1","2","3","4"],["1","2","3","4"]];
         }
 
