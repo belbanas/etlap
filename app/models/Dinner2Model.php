@@ -13,9 +13,9 @@ class Dinner2Model extends MenuModel
      * @param string $language
      * @throws Exception
      */
-    public function __construct(string $language)
+    public function __construct(string $language, bool $isPre = false)
     {
-        parent::__construct($language);
+        parent::__construct($language, $isPre);
         $this->type = "Dinner2";
         $this->coordinateFile = 'dinner2_coordinates.json';
     }
