@@ -11,7 +11,7 @@
   }
 
 body {
-    font-family: myFirstFont;
+    font-family: myFirstFont, serif;
     height: 1080px;
     width: 1920px;
     overflow: hidden;

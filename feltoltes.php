@@ -4,10 +4,10 @@ use app\models\Upload;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-$upload = new Upload();
-$upload->uploadFile($_FILES, $_POST);
-//var_dump($_POST);
-//var_dump($_FILES);
+if (isset($_FILES['etlap'])) {
+    $upload = new Upload();
+    $upload->uploadFile($_FILES, $_POST);
+}
 
 ?>
 
@@ -18,12 +18,20 @@ $upload->uploadFile($_FILES, $_POST);
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/feltoltes.css">
     <title>Étlap feltöltése</title>
 </head>
 <body>
+<img id="logo" src="static/images/eurest_logo_nagy.png" alt="eurest_logo_nagy"/>
+<div class="header">
+    <p id="pult-name">Étlap feltöltése</p>
+</div>
 <div class="upload-container">
-    <h1>Étlap feltöltése</h1>
+    <div class="upload-success">
+        <?php if (isset($_FILES['etlap'])): ?>
+            <h1>Sikeres feltöltés!</h1><br>
+        <?php endif; ?>
+    </div>
     <form action="feltoltes.php" method="post" enctype="multipart/form-data">
         <label for="etlap">Étlap kiválasztása:</label>
         <input type="file" name="etlap" id="etlap"><br><br>
