@@ -41,5 +41,41 @@ if (isset($_FILES['etlap'])) {
         <button type="submit" name="submit">Feltölt</button>
     </form>
 </div>
+<div class="test-container">
+    <h1>TESZT</h1><br>
+    <form action="bejarat.html" method="get">
+        <label for="pult">Válassz pultot:</label>
+        <select name="id" id="pult">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select><br>
+        <label for="day">Válassz napot:</label>
+        <select name="day" id="day">
+            <option value="Monday">Hétfő</option>
+            <option value="Tuesday">Kedd</option>
+            <option value="Wednesday">Szerda</option>
+            <option value="Thursday">Csütörtök</option>
+            <option value="Friday">Péntek</option>
+            <option value="Saturday">Szombat</option>
+            <option value="Sunday">Vasárnap</option>
+        </select><br>
+        <label for="time">Válassz napszakot:</label>
+        <select name="time" id="time">
+            <option value="05:00:12">Reggeli előtt</option>
+            <option value="05:30:12">Reggeli</option>
+            <option value="10:20:12">Ebéd előtt</option>
+            <option value="10:50:12">Ebéd</option>
+            <option value="16:20:12">Vacsora1 előtt</option>
+            <option value="16:50:12">Vacsora1</option>
+            <option value="19:20:12">Vacsora2 előtt</option>
+            <option value="19:50:12">Vacsora2</option>
+            <option value="23:00:12">Uzsonna előtt</option>
+            <option value="23:30:12">Uzsonna</option>
+        </select><br>
+        <button type="submit">OK</button>
+    </form>
+</div>
 </body>
 </html>
