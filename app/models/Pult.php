@@ -38,11 +38,23 @@ class Pult
             $breakfastEnd = $this->intervals['breakfast']['weekend'];
         }
         switch ($currentTime) {
+            case $currentTime >= $this->intervals["pre-breakfast"]["start"] && $currentTime <= $this->intervals["breakfast"]["start"]:
+                $modelHU = new BreakfastModel("HU", true);
+                $modelUA = new BreakfastModel("UA", true);
+                $modelKR = new BreakfastModel("KR", true);
+                $modelEN = new BreakfastModel("EN", true);
+                break;
             case $currentTime >= $this->intervals["breakfast"]["start"] && $currentTime < $breakfastEnd:
                 $modelHU = new BreakfastModel("HU");
                 $modelUA = new BreakfastModel("UA");
                 $modelKR = new BreakfastModel("KR");
                 $modelEN = new BreakfastModel("EN");
+                break;
+            case $currentTime >= $this->intervals["pre-lunch"]["start"] && $currentTime < $this->intervals["lunch"]["start"]:
+                $modelHU = new LunchModel('HU', true);
+                $modelUA = new LunchModel('UA', true);
+                $modelKR = new LunchModel('KR', true);
+                $modelEN = new LunchModel('EN', true);
                 break;
             case $currentTime >= $this->intervals["lunch"]["start"] && $currentTime < $this->intervals["lunch"]["end"]:
                 $modelHU = new LunchModel('HU');
@@ -50,17 +62,35 @@ class Pult
                 $modelKR = new LunchModel('KR');
                 $modelEN = new LunchModel('EN');
                 break;
+            case $currentTime >= $this->intervals["pre-dinner1"]["start"] && $currentTime < $this->intervals["dinner1"]["start"]:
+                $modelHU = new DinnerModel("HU", true);
+                $modelUA = new DinnerModel("UA", true);
+                $modelKR = new DinnerModel("KR", true);
+                $modelEN = new DinnerModel("EN", true);
+                break;
             case $currentTime >= $this->intervals["dinner1"]["start"] && $currentTime < $this->intervals["dinner1"]["end"]:
                 $modelHU = new DinnerModel("HU");
                 $modelUA = new DinnerModel("UA");
                 $modelKR = new DinnerModel("KR");
                 $modelEN = new DinnerModel("EN");
                 break;
+            case $currentTime >= $this->intervals["pre-dinner2"]["start"] && $currentTime < $this->intervals["dinner2"]["start"]:
+                $modelHU = new Dinner2Model("HU", true);
+                $modelUA = new Dinner2Model("UA", true);
+                $modelKR = new Dinner2Model("KR", true);
+                $modelEN = new Dinner2Model("EN", true);
+                break;
             case $currentTime >= $this->intervals["dinner2"]["start"] && $currentTime < $this->intervals["dinner2"]["end"]:
                 $modelHU = new Dinner2Model("HU");
                 $modelUA = new Dinner2Model("UA");
                 $modelKR = new Dinner2Model("KR");
                 $modelEN = new Dinner2Model("EN");
+                break;
+            case $currentTime >= $this->intervals["pre-snack"]["start"] && $currentTime < $this->intervals["snack"]["start"]:
+                $modelHU = new SnackModel("HU", true);
+                $modelUA = new SnackModel("UA", true);
+                $modelKR = new SnackModel("KR", true);
+                $modelEN = new SnackModel("EN", true);
                 break;
             case ($currentTime >= $this->intervals["snack"]["start"] && $currentTime < $this->intervals["snack"]["end"])
                 || ($currentTime >= $this->intervals["snack2"]["start"] && $currentTime < $this->intervals["snack2"]["end"]):
