@@ -93,12 +93,20 @@ body {
     color: #434343;
 }
 
+#main-flag {
+    margin-top: -12rem;
+}
+
+#flag {
+    margin-top: -28rem;
+}
+
 .flag-container {
     position: absolute;
     width: 7rem;
-    margin-top: 0.5rem;
+    /*margin-top: 0.5rem;*/
     margin-left: 44rem;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
 }
 
 .flag {
