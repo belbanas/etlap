@@ -77,8 +77,8 @@ if (isset($_FILES['etlap'])) {
             <option value="16:50:12">Vacsora1</option>
             <option value="19:20:12">Vacsora2 előtt</option>
             <option value="19:50:12">Vacsora2</option>
-            <option value="23:00:12">Uzsonna előtt</option>
-            <option value="23:30:12">Uzsonna</option>
+            <option value="23:00:12">Éjszakai vacsora előtt</option>
+            <option value="23:30:12">Éjszakai vacsora</option>
         </select><br>
         <button type="submit">OK</button>
     </form>
