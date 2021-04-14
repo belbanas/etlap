@@ -32,7 +32,7 @@ body {
 .container {
     position: absolute;
     text-align: center;
-    font-size: 3.5rem;
+    font-size: 2.75rem;
     width: 840px;
     height: 80%;
     margin-left: 1080px;
@@ -126,7 +126,7 @@ p {
 }
 
 .anim {
-    animation-duration: 0.5s;
+    animation-duration: 2s;
     animation-name: fade;
 }
 
