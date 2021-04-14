@@ -4,8 +4,6 @@ use app\models\Upload;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-var_dump($_FILES, $_POST);
-
 $uploadOK = 'semmi';
 
 if (isset($_FILES['etlap'])) {
@@ -42,15 +40,15 @@ if (isset($_FILES['etlap'])) {
     </div>
     <form action="feltoltes.php" method="post" enctype="multipart/form-data">
         <label for="etlap">Étlap kiválasztása:</label>
-        <input type="file" name="etlap" id="etlap"><br><br>
+        <input type="file" name="etlap" id="etlap"><br>
         <!--        Ez csak akkor fog működni ha chrome-al használja          -->
         <label for="week">Melyik hétre akarod az étlapot?</label>
-        <input type="week" name="week" id="week"><br><br>
+        <input type="week" name="week" id="week"><br>
         <button type="submit" name="submit">Feltölt</button>
     </form>
 </div>
 <div class="test-container">
-    <h1>TESZT</h1><br>
+    <h2>TESZT</h2><br>
     <form action="bejarat.html" method="get">
         <label for="pult">Válassz pultot:</label>
         <select name="id" id="pult">

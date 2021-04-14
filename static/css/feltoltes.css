@@ -37,27 +37,26 @@ body {
     padding: 3rem;
 }
 
-.upload-container {
+.upload-container, .test-container {
     text-align: center;
     margin: 3rem;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     border: 1px solid black;
     padding: 0.5rem;
 }
 
 button {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
     padding: 0.5rem;
 }
 
-.test-container {
-    margin: 3rem;
-    text-align: center;
-    border: 1px solid black;
-    padding: 0.5rem;
+select, input {
+    margin: 0.5rem;
+    font-size: 2.5rem;
 }
 
-select {
-    margin: 0.5rem
+label {
+    padding: 0.5rem;
+    font-weight: bold;
 }
