@@ -4,9 +4,13 @@ use app\models\Upload;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+var_dump($_FILES, $_POST);
+
+$uploadOK = 'semmi';
+
 if (isset($_FILES['etlap'])) {
     $upload = new Upload();
-    $upload->uploadFile($_FILES, $_POST);
+    $uploadOK = $upload->uploadFile($_FILES, $_POST);
 }
 
 ?>
@@ -28,8 +32,12 @@ if (isset($_FILES['etlap'])) {
 </div>
 <div class="upload-container">
     <div class="upload-success">
-        <?php if (isset($_FILES['etlap'])): ?>
+        <?php if ($uploadOK === 'semmi'): ?>
+
+        <?php elseif ($uploadOK): ?>
             <h1>Sikeres feltöltés!</h1><br>
+        <?php elseif (!$uploadOK): ?>
+            <h1>Sikertelen feltöltés!</h1><br>
         <?php endif; ?>
     </div>
     <form action="feltoltes.php" method="post" enctype="multipart/form-data">
