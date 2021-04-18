@@ -11,7 +11,7 @@
   }
 
 body {
-    font-family: myFirstFont, serif;
+    font-family: sans-serif;
     height: 1080px;
     width: 1920px;
     overflow: hidden;
@@ -94,15 +94,15 @@ body {
 }
 
 #main-flag {
-    margin-top: -12rem;
+    top: 1rem;
 }
 
 #flag {
-    margin-top: -28rem;
+    top: 7rem;
 }
 
 .flag-container {
-    position: absolute;
+    position: fixed;
     width: 7rem;
     /*margin-top: 0.5rem;*/
     margin-left: 44rem;
