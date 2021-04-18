@@ -11,7 +11,7 @@
   }
 
 body {
-    font-family: sans-serif;
+    font-family: myFirstFont, sans-serif;
     height: 1080px;
     width: 1920px;
     overflow: hidden;
@@ -79,13 +79,29 @@ body {
     height: 0.4rem;
     width: 40%;
     margin-left: 30%;
-    margin-top: -0.25rem;
+    margin-top: 0rem;
 }
 
 .foods {
-    padding-top: 4.6rem;
+    position: fixed;
+    top: 23%;
     color: #434343;
-    height: 40%;
+    height: 50%;
+    width: 840px;
+}
+
+.foods2 {
+    position: fixed;
+    top: 63%;
+    color: #434343;
+    height: 50%;
+    width: 840px;
+}
+
+.name {
+    padding: 1rem;
+    line-height: 2.7rem;
+    margin-top: 0.5rem;
 }
 
 #food-price {
