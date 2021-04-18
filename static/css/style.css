@@ -66,10 +66,12 @@ body {
 }
 
 .line {
+    position: fixed;
+    top: 60%;
     background-color: #464646;
     height: 0.4rem;
-    width: 60%;
-    margin-left: 20%;
+    width: 30rem;
+    margin-left: 10%;
 }
 
 .line2 {
