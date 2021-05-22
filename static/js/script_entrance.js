@@ -304,6 +304,10 @@ var DOM = {
       DOM.containers.mainFlagContainer.innerHTML = DOM.flagList.HU;
     }
 
+    var timeout = setTimeout(function(){
+      location.reload();
+    }, 60000) // 1perc múlva újratölti az oldalt
+
     fetch(url)
       .then(function (response) {
         return response.json();
@@ -350,6 +354,11 @@ var DOM = {
         }
 
         DOM.slideshow(json_response);
+        clearTimeout(timeout);
+      })
+      .catch(function (error) {
+       // window.alert("Valami hiba történt")
+        location.reload();
       });
   }
 };
