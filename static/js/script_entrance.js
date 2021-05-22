@@ -349,7 +349,7 @@ var DOM = {
           }
 
           DOM.containers.mainPicContainer.src =
-            "kepek/" + json_response.HU.mainPic;
+            "kepek/" + json_response.HU.mainPic + "?v=" + Math.floor((Math.random() * 100) + 1);
           console.log(DOM.foodList.soupHU);
         }
 
