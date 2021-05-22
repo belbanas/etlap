@@ -6,5 +6,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 $pultId = $_GET['id'];
 $pult = new Pult($pultId);
+$data = $pult->getJSON();
+
 header('Content-Type: application/json');
-echo $pult->getJSON();
+header('Content-Length: ' . strlen($data));
+
+echo $data;
