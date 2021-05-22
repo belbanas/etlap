@@ -127,15 +127,19 @@ class MenuModel
 
         if ($this->isPre) {
             if ($this->type === 'Breakfast') {
-                $food->setMainCoursePicture("tarhonyaleves.jpg");
+                if ($this->TODAY === 'Saturday' || $this->TODAY === 'Sunday') {
+                    $food->setMainCoursePicture("prebreakfast_we.jpg");
+                } else {
+                    $food->setMainCoursePicture("prebreakfast_we.jpg");
+                }
             } else if ($this->type === 'Lunch') {
-                $food->setMainCoursePicture("tarhonyaleves.jpg");
+                $food->setMainCoursePicture("prelunch.jpg");
             } else if ($this->type === 'Dinner') {
-                $food->setMainCoursePicture("tarhonyaleves.jpg");
+                $food->setMainCoursePicture("predinner1.jpg");
             } else if ($this->type === 'Dinner2') {
-                $food->setMainCoursePicture("tarhonyaleves.jpg");
+                $food->setMainCoursePicture("predinner2.jpg");
             } else if ($this->type === 'Snack') {
-                $food->setMainCoursePicture("tarhonyaleves.jpg");
+                $food->setMainCoursePicture("presnack.jpg");
             }
         } else {
             $food->setMainCoursePicture($picture);
